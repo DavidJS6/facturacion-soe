@@ -1,9 +1,10 @@
 package bo.edu.uagrm.soe.facturacionsoe.database.models;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
-@Table(name = "data", schema = "test", catalog = "")
+@Table(name = "data", schema = "public", catalog = "")
 public class Data {
     private Long id;
     private String name;
@@ -38,5 +39,20 @@ public class Data {
 
     public void setAge(Integer age) {
         this.age = age;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Data data = (Data) o;
+        return Objects.equals(id, data.id) &&
+                Objects.equals(name, data.name) &&
+                Objects.equals(age, data.age);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, age);
     }
 }
