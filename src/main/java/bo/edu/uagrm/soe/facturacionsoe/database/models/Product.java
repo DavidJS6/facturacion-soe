@@ -1,5 +1,7 @@
 package bo.edu.uagrm.soe.facturacionsoe.database.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
@@ -11,6 +13,7 @@ public class Product {
     private String code;
     private String name;
     private String description;
+    @JsonIgnore
     private Collection<InvoiceItem> invoiceItemList;
     private Collection<ProductPrice> productPriceList;
 

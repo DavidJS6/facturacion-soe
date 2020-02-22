@@ -1,7 +1,7 @@
 package bo.edu.uagrm.soe.facturacionsoe.database.services;
 
 import bo.edu.uagrm.soe.facturacionsoe.database.models.Payment;
-import bo.edu.uagrm.soe.facturacionsoe.dto.PaymentDto;
+import bo.edu.uagrm.soe.facturacionsoe.dto.raw.PaymentDto;
 
 import java.util.Collection;
 

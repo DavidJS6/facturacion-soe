@@ -1,7 +1,7 @@
 package bo.edu.uagrm.soe.facturacionsoe.database.services;
 
 import bo.edu.uagrm.soe.facturacionsoe.database.models.ProductPrice;
-import bo.edu.uagrm.soe.facturacionsoe.dto.ProductPriceDto;
+import bo.edu.uagrm.soe.facturacionsoe.dto.raw.ProductPriceDto;
 
 import java.util.Collection;
 
