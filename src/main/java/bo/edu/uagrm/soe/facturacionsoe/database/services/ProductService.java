@@ -8,9 +8,9 @@ import java.util.Collection;
 
 public interface ProductService {
 
-    void save(ValidatedProductDto productDto);
+    void save(ValidatedProductDto productDto) throws Exception;
 
-    void update(Long productId, ProductDto productDto);
+    void update(Long productId, ValidatedProductDto productDto);
 
     void delete(Long productId);
 

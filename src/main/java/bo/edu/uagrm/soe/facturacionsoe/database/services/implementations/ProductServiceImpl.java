@@ -1,6 +1,7 @@
 package bo.edu.uagrm.soe.facturacionsoe.database.services.implementations;
 
 import bo.edu.uagrm.soe.facturacionsoe.database.models.Product;
+import bo.edu.uagrm.soe.facturacionsoe.database.models.ProductPrice;
 import bo.edu.uagrm.soe.facturacionsoe.database.repositories.ProductRepository;
 import bo.edu.uagrm.soe.facturacionsoe.database.services.ProductPriceService;
 import bo.edu.uagrm.soe.facturacionsoe.database.services.ProductService;
@@ -9,7 +10,9 @@ import bo.edu.uagrm.soe.facturacionsoe.dto.validated.ValidatedProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Service("ProductService")
 public class ProductServiceImpl implements ProductService {
@@ -20,17 +23,21 @@ public class ProductServiceImpl implements ProductService {
     private ProductPriceService productPriceService;
 
     @Override
-    public void save(ValidatedProductDto productDto) {
+    public void save(ValidatedProductDto productDto) throws Exception {
         Product product = new Product();
         product.setCode(productDto.getCodeObject().getValue());
         product.setName(productDto.getNameObject().getValue());
         product.setDescription(productDto.getDescriptionObject().getValue());
 
+        List<ProductPrice> list = new ArrayList<>();
+        list.add(productPriceService.getProductPriceById(productDto.getProductPriceIdObject().getValue()));
+        product.setProductPriceList(list);
+
         productRepository.save(product);
     }
 
     @Override
-    public void update(Long productId, ProductDto productDto) {
+    public void update(Long productId, ValidatedProductDto productDto) {
 
     }
 
