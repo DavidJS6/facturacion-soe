@@ -16,7 +16,6 @@ public class Payment {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -82,7 +81,8 @@ public class Payment {
         return Objects.hash(id, paymentAmount, paymentCode, timestamp, paymentMode);
     }
 
-    @OneToOne(mappedBy = "payment")
+    @OneToOne
+    @JoinColumn(name = "invoice_id", referencedColumnName = "id", nullable = false)
     public Invoice getInvoice() {
         return invoice;
     }

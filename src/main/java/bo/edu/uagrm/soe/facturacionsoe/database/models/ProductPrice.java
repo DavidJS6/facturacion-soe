@@ -12,10 +12,10 @@ public class ProductPrice {
     private Timestamp startTimestamp;
     private Timestamp endTimestamp;
     private Boolean isActive;
+    private Product product;
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -80,4 +80,15 @@ public class ProductPrice {
     public int hashCode() {
         return Objects.hash(id, amount, startTimestamp, endTimestamp, isActive);
     }
+
+    @ManyToOne
+    @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
 }

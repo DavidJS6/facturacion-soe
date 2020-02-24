@@ -1,6 +1,5 @@
 package bo.edu.uagrm.soe.facturacionsoe.dto.validated;
 
-import bo.edu.uagrm.soe.facturacionsoe.database.models.InvoiceItem;
 import bo.edu.uagrm.soe.facturacionsoe.dto.raw.InvoiceItemDto;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.DoubleObject;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.LongObject;

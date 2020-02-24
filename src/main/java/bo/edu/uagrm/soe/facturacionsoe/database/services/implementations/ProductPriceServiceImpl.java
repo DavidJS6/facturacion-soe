@@ -15,6 +15,12 @@ public class ProductPriceServiceImpl implements ProductPriceService {
     @Autowired
     private ProductPriceRepository productPriceRepository;
 
+    /*
+    public ProductPriceServiceImpl(ProductPriceRepository productPriceRepository) {
+        this.productPriceRepository = productPriceRepository;
+    }
+    */
+
     @Override
     public void save(ValidatedProductPriceDto productPriceDto) {
         ProductPrice productPrice = new ProductPrice();
