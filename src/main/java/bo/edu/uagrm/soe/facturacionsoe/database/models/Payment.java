@@ -82,8 +82,7 @@ public class Payment {
         return Objects.hash(id, paymentAmount, paymentCode, timestamp, paymentMode);
     }
 
-    @ManyToOne
-    @JoinColumn(name = "invoice_id", referencedColumnName = "id", nullable = false)
+    @OneToOne(mappedBy = "payment")
     public Invoice getInvoice() {
         return invoice;
     }

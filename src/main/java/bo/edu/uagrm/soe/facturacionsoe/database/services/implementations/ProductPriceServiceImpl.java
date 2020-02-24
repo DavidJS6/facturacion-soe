@@ -3,7 +3,6 @@ package bo.edu.uagrm.soe.facturacionsoe.database.services.implementations;
 import bo.edu.uagrm.soe.facturacionsoe.database.models.ProductPrice;
 import bo.edu.uagrm.soe.facturacionsoe.database.repositories.ProductPriceRepository;
 import bo.edu.uagrm.soe.facturacionsoe.database.services.ProductPriceService;
-import bo.edu.uagrm.soe.facturacionsoe.dto.raw.ProductPriceDto;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.ValidatedProductPriceDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,21 +18,19 @@ public class ProductPriceServiceImpl implements ProductPriceService {
     @Override
     public void save(ValidatedProductPriceDto productPriceDto) {
         ProductPrice productPrice = new ProductPrice();
-        productPrice.setAmount(productPriceDto.getAmountObject().getValue());
-        productPrice.setStartTimestamp(productPriceDto.getStartTimestamp().getValue());
-        productPrice.setEndTimestamp(productPriceDto.getEndTimestamp().getValue());
-        productPrice.setActive(productPriceDto.getIsActive().getValue());
-        productPriceRepository.save(productPrice);
+        saveEntity(productPrice, productPriceDto);
     }
 
     @Override
-    public void update(Long productPriceId, ValidatedProductPriceDto productPriceDto) {
-
+    public void update(Long productPriceId, ValidatedProductPriceDto productPriceDto) throws Exception {
+        ProductPrice productPrice = getProductPriceById(productPriceId);
+        saveEntity(productPrice, productPriceDto);
     }
 
     @Override
-    public void delete(Long productPriceId) {
-
+    public void delete(Long productPriceId) throws Exception {
+        ProductPrice productPrice = getProductPriceById(productPriceId);
+        productPriceRepository.delete(productPrice);
     }
 
     @Override
@@ -44,7 +41,7 @@ public class ProductPriceServiceImpl implements ProductPriceService {
 
     @Override
     public Collection<ProductPrice> getAllPrices() {
-        return null;
+        return productPriceRepository.findAll();
     }
 
     @Override
@@ -55,6 +52,14 @@ public class ProductPriceServiceImpl implements ProductPriceService {
     @Override
     public Collection<ProductPrice> getAllActivePricesByProductId(Long ProductId) {
         return null;
+    }
+
+    private void saveEntity(ProductPrice productPrice, ValidatedProductPriceDto productPriceDto) {
+        productPrice.setAmount(productPriceDto.getAmountObject().getValue());
+        productPrice.setStartTimestamp(productPriceDto.getStartTimestamp().getValue());
+        productPrice.setEndTimestamp(productPriceDto.getEndTimestamp().getValue());
+        productPrice.setActive(productPriceDto.getIsActive().getValue());
+        productPriceRepository.save(productPrice);
     }
 
 }

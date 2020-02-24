@@ -1,7 +1,5 @@
 package bo.edu.uagrm.soe.facturacionsoe.dto.raw;
 
-import org.springframework.beans.factory.annotation.Required;
-
 import java.sql.Timestamp;
 
 public class ProductPriceDto {

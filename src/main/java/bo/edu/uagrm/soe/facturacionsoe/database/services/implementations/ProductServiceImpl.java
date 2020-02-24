@@ -5,7 +5,6 @@ import bo.edu.uagrm.soe.facturacionsoe.database.models.ProductPrice;
 import bo.edu.uagrm.soe.facturacionsoe.database.repositories.ProductRepository;
 import bo.edu.uagrm.soe.facturacionsoe.database.services.ProductPriceService;
 import bo.edu.uagrm.soe.facturacionsoe.database.services.ProductService;
-import bo.edu.uagrm.soe.facturacionsoe.dto.raw.ProductDto;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.ValidatedProductDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +24,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void save(ValidatedProductDto productDto) throws Exception {
         Product product = new Product();
+        /*
         product.setCode(productDto.getCodeObject().getValue());
         product.setName(productDto.getNameObject().getValue());
         product.setDescription(productDto.getDescriptionObject().getValue());
@@ -34,16 +34,31 @@ public class ProductServiceImpl implements ProductService {
         product.setProductPriceList(list);
 
         productRepository.save(product);
+        */
+        saveEntity(product, productDto);
     }
 
     @Override
-    public void update(Long productId, ValidatedProductDto productDto) {
+    public void update(Long productId, ValidatedProductDto productDto) throws Exception {
+        Product product = getProductById(productId);
+        /*
+        product.setCode(productDto.getCodeObject().getValue());
+        product.setName(productDto.getNameObject().getValue());
+        product.setDescription(productDto.getDescriptionObject().getValue());
 
+        List<ProductPrice> list = new ArrayList<>();
+        list.add(productPriceService.getProductPriceById(productDto.getProductPriceIdObject().getValue()));
+        product.setProductPriceList(list);
+
+        productRepository.save(product);
+        */
+        saveEntity(product, productDto);
     }
 
     @Override
-    public void delete(Long productId) {
-
+    public void delete(Long productId) throws Exception {
+        Product product = getProductById(productId);
+        productRepository.delete(product);
     }
 
     @Override
@@ -54,7 +69,19 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Collection<Product> getAllProducts() {
-        return null;
+        return productRepository.findAll();
+    }
+
+    private void saveEntity(Product product, ValidatedProductDto productDto) throws Exception {
+        product.setCode(productDto.getCodeObject().getValue());
+        product.setName(productDto.getNameObject().getValue());
+        product.setDescription(productDto.getDescriptionObject().getValue());
+
+        List<ProductPrice> list = new ArrayList<>();
+        list.add(productPriceService.getProductPriceById(productDto.getProductPriceIdObject().getValue()));
+        product.setProductPriceList(list);
+
+        productRepository.save(product);
     }
 
 }

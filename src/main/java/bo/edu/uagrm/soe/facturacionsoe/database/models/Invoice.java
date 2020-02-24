@@ -14,7 +14,7 @@ public class Invoice {
     private Timestamp timestamp;
     private String status;
     private Collection<InvoiceItem> invoiceItemList;
-    private Collection<Payment> paymenList;
+    private Payment payment;
 
     @Id
     @Column(name = "id")
@@ -93,12 +93,12 @@ public class Invoice {
         this.invoiceItemList = invoiceItemList;
     }
 
-    @OneToMany(mappedBy = "invoice")
-    public Collection<Payment> getPaymenList() {
-        return paymenList;
+    @OneToOne(mappedBy = "invoice")
+    public Payment getPayment() {
+        return payment;
     }
 
-    public void setPaymenList(Collection<Payment> paymenList) {
-        this.paymenList = paymenList;
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 }
