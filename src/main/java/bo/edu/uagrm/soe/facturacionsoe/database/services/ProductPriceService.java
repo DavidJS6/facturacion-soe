@@ -7,7 +7,7 @@ import java.util.Collection;
 
 public interface ProductPriceService {
 
-    void save(ValidatedProductPriceDto productPriceDto);
+    void save(ValidatedProductPriceDto productPriceDto) throws Exception;
 
     void update(Long productPriceId, ValidatedProductPriceDto productPriceDto) throws Exception;
 

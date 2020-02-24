@@ -16,10 +16,12 @@ public class Product {
     private String description;
     @JsonIgnore
     private Collection<InvoiceItem> invoiceItemList;
+    @JsonIgnore
     private Collection<ProductPrice> productPriceList;
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }

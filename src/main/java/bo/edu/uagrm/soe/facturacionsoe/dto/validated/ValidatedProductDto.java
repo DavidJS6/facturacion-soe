@@ -9,13 +9,11 @@ public class ValidatedProductDto {
     private StringObject codeObject;
     private StringObject nameObject;
     private StringObject descriptionObject;
-    private LongObject productPriceIdObject;
 
     public ValidatedProductDto(ProductDto dto) {
         this.codeObject = new StringObject(dto.getCode());
         this.nameObject = new StringObject(dto.getName());
         this.descriptionObject = new StringObject(dto.getDescription());
-        this.productPriceIdObject = new LongObject(dto.getProductPriceId());
     }
 
     public StringObject getCodeObject() {
@@ -42,11 +40,4 @@ public class ValidatedProductDto {
         this.descriptionObject = descriptionObject;
     }
 
-    public LongObject getProductPriceIdObject() {
-        return productPriceIdObject;
-    }
-
-    public void setProductPriceIdObject(LongObject productPriceIdObject) {
-        this.productPriceIdObject = productPriceIdObject;
-    }
 }

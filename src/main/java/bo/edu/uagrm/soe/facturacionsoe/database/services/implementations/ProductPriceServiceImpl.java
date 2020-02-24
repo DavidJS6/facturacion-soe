@@ -3,6 +3,7 @@ package bo.edu.uagrm.soe.facturacionsoe.database.services.implementations;
 import bo.edu.uagrm.soe.facturacionsoe.database.models.ProductPrice;
 import bo.edu.uagrm.soe.facturacionsoe.database.repositories.ProductPriceRepository;
 import bo.edu.uagrm.soe.facturacionsoe.database.services.ProductPriceService;
+import bo.edu.uagrm.soe.facturacionsoe.database.services.ProductService;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.ValidatedProductPriceDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,15 +15,11 @@ public class ProductPriceServiceImpl implements ProductPriceService {
 
     @Autowired
     private ProductPriceRepository productPriceRepository;
-
-    /*
-    public ProductPriceServiceImpl(ProductPriceRepository productPriceRepository) {
-        this.productPriceRepository = productPriceRepository;
-    }
-    */
+    @Autowired
+    private ProductService productService;
 
     @Override
-    public void save(ValidatedProductPriceDto productPriceDto) {
+    public void save(ValidatedProductPriceDto productPriceDto) throws Exception {
         ProductPrice productPrice = new ProductPrice();
         saveEntity(productPrice, productPriceDto);
     }
@@ -60,11 +57,12 @@ public class ProductPriceServiceImpl implements ProductPriceService {
         return null;
     }
 
-    private void saveEntity(ProductPrice productPrice, ValidatedProductPriceDto productPriceDto) {
+    private void saveEntity(ProductPrice productPrice, ValidatedProductPriceDto productPriceDto) throws Exception {
         productPrice.setAmount(productPriceDto.getAmountObject().getValue());
-        productPrice.setStartTimestamp(productPriceDto.getStartTimestamp().getValue());
-        productPrice.setEndTimestamp(productPriceDto.getEndTimestamp().getValue());
-        productPrice.setActive(productPriceDto.getIsActive().getValue());
+        productPrice.setStartTimestamp(productPriceDto.getStartTimestampObject().getValue());
+        productPrice.setEndTimestamp(productPriceDto.getEndTimestampObject().getValue());
+        productPrice.setActive(productPriceDto.getIsActiveObject().getValue());
+        productPrice.setProduct(productService.getProductById(productPriceDto.getProductIdObject().getValue()));
         productPriceRepository.save(productPrice);
     }
 

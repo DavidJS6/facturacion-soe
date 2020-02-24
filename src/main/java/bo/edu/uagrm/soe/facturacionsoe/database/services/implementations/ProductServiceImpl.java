@@ -18,8 +18,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
-    @Autowired
-    private ProductPriceService productPriceService;
 
     @Override
     public void save(ValidatedProductDto productDto) throws Exception {
@@ -76,11 +74,6 @@ public class ProductServiceImpl implements ProductService {
         product.setCode(productDto.getCodeObject().getValue());
         product.setName(productDto.getNameObject().getValue());
         product.setDescription(productDto.getDescriptionObject().getValue());
-
-        List<ProductPrice> list = new ArrayList<>();
-        list.add(productPriceService.getProductPriceById(productDto.getProductPriceIdObject().getValue()));
-        product.setProductPriceList(list);
-
         productRepository.save(product);
     }
 

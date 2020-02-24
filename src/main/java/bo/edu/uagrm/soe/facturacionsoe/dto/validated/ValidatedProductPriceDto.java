@@ -3,20 +3,23 @@ package bo.edu.uagrm.soe.facturacionsoe.dto.validated;
 import bo.edu.uagrm.soe.facturacionsoe.dto.raw.ProductPriceDto;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.BooleanObject;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.DoubleObject;
+import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.LongObject;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.TimestampObject;
 
 public class ValidatedProductPriceDto {
 
     private DoubleObject amountObject;
-    private TimestampObject startTimestamp;
-    private TimestampObject endTimestamp;
-    private BooleanObject isActive;
+    private TimestampObject startTimestampObject;
+    private TimestampObject endTimestampObject;
+    private BooleanObject isActiveObject;
+    private LongObject productIdObject;
 
     public ValidatedProductPriceDto(ProductPriceDto productPriceDto) {
         this.amountObject = new DoubleObject(productPriceDto.getAmount());
-        this.startTimestamp = new TimestampObject(productPriceDto.getStartTimestamp());
-        this.endTimestamp = new TimestampObject(productPriceDto.getEndTimestamp());
-        this.isActive = new BooleanObject(productPriceDto.getActive());
+        this.startTimestampObject = new TimestampObject(productPriceDto.getStartTimestamp());
+        this.endTimestampObject = new TimestampObject(productPriceDto.getEndTimestamp());
+        this.isActiveObject = new BooleanObject(productPriceDto.getActive());
+        this.productIdObject = new LongObject(productPriceDto.getProductId());
     }
 
     public DoubleObject getAmountObject() {
@@ -27,27 +30,36 @@ public class ValidatedProductPriceDto {
         this.amountObject = amountObject;
     }
 
-    public TimestampObject getStartTimestamp() {
-        return startTimestamp;
+    public TimestampObject getStartTimestampObject() {
+        return startTimestampObject;
     }
 
-    public void setStartTimestamp(TimestampObject startTimestamp) {
-        this.startTimestamp = startTimestamp;
+    public void setStartTimestampObject(TimestampObject startTimestampObject) {
+        this.startTimestampObject = startTimestampObject;
     }
 
-    public TimestampObject getEndTimestamp() {
-        return endTimestamp;
+    public TimestampObject getEndTimestampObject() {
+        return endTimestampObject;
     }
 
-    public void setEndTimestamp(TimestampObject endTimestamp) {
-        this.endTimestamp = endTimestamp;
+    public void setEndTimestampObject(TimestampObject endTimestampObject) {
+        this.endTimestampObject = endTimestampObject;
     }
 
-    public BooleanObject getIsActive() {
-        return isActive;
+    public BooleanObject getIsActiveObject() {
+        return isActiveObject;
     }
 
-    public void setIsActive(BooleanObject isActive) {
-        this.isActive = isActive;
+    public void setIsActiveObject(BooleanObject isActiveObject) {
+        this.isActiveObject = isActiveObject;
     }
+
+    public LongObject getProductIdObject() {
+        return productIdObject;
+    }
+
+    public void setProductIdObject(LongObject productIdObject) {
+        this.productIdObject = productIdObject;
+    }
+
 }

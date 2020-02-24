@@ -1,5 +1,7 @@
 package bo.edu.uagrm.soe.facturacionsoe.dto.raw;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.sql.Timestamp;
 
 public class ProductPriceDto {
@@ -7,7 +9,9 @@ public class ProductPriceDto {
     private Double amount;
     private Timestamp startTimestamp;
     private Timestamp endTimestamp;
+    @JsonProperty("isActive")
     private Boolean isActive;
+    private Long productId;
 
     public Double getAmount() {
         return amount;
@@ -41,4 +45,11 @@ public class ProductPriceDto {
         isActive = active;
     }
 
+    public Long getProductId() {
+        return productId;
+    }
+
+    public void setProductId(Long productId) {
+        this.productId = productId;
+    }
 }
