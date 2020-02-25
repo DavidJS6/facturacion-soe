@@ -1,7 +1,6 @@
 package bo.edu.uagrm.soe.facturacionsoe.dto.raw;
 
 public class InvoiceItemDto {
-
     private Double unitPrice;
     private Double quantity;
     private Double itemAmount;

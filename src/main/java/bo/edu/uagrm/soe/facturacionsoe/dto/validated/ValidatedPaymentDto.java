@@ -6,7 +6,6 @@ import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.StringObject;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.TimestampObject;
 
 public class ValidatedPaymentDto {
-
     private DoubleObject paymentAmountObject;
     private StringObject paymentCodeObject;
     private TimestampObject timestampObject;

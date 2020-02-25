@@ -4,7 +4,6 @@ import java.sql.Timestamp;
 import java.util.List;
 
 public class InvoiceDto {
-
     private Long invoiceNumber;
     private Double totalAmount;
     private Timestamp timestamp;

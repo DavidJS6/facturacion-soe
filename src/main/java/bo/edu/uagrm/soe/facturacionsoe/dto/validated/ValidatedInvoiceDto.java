@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ValidatedInvoiceDto {
-
     private LongObject invoiceNumberObject;
     private DoubleObject totalAmountObject;
     private TimestampObject timestampObject;

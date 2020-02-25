@@ -1,7 +1,6 @@
 package bo.edu.uagrm.soe.facturacionsoe.database.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.util.Collection;

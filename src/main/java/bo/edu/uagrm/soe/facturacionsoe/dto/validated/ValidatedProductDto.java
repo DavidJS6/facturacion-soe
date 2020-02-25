@@ -1,11 +1,9 @@
 package bo.edu.uagrm.soe.facturacionsoe.dto.validated;
 
 import bo.edu.uagrm.soe.facturacionsoe.dto.raw.ProductDto;
-import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.LongObject;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.StringObject;
 
 public class ValidatedProductDto {
-
     private StringObject codeObject;
     private StringObject nameObject;
     private StringObject descriptionObject;
@@ -39,5 +37,4 @@ public class ValidatedProductDto {
     public void setDescriptionObject(StringObject descriptionObject) {
         this.descriptionObject = descriptionObject;
     }
-
 }

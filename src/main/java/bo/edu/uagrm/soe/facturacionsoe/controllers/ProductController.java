@@ -1,9 +1,8 @@
 package bo.edu.uagrm.soe.facturacionsoe.controllers;
 
-import bo.edu.uagrm.soe.facturacionsoe.database.services.ProductService;
+import bo.edu.uagrm.soe.facturacionsoe.services.ProductService;
 import bo.edu.uagrm.soe.facturacionsoe.dto.raw.ProductDto;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.ValidatedProductDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +10,11 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/facturacion-soe/products")
 public class ProductController {
-
-    @Autowired
     private ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @PostMapping
     public ResponseEntity<Object> saveProduct(@RequestBody ProductDto productDto) throws Exception {
@@ -42,5 +43,4 @@ public class ProductController {
     public ResponseEntity<Object> getAllProducts() {
         return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
     }
-
 }

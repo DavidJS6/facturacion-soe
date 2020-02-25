@@ -3,7 +3,6 @@ package bo.edu.uagrm.soe.facturacionsoe.dto.raw;
 import java.sql.Timestamp;
 
 public class PaymentDto {
-
     private Double paymentAmount;
     private String paymentCode;
     private Timestamp timestamp;

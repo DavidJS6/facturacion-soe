@@ -1,7 +1,6 @@
 package bo.edu.uagrm.soe.facturacionsoe.dto.raw;
 
 public class ProductDto {
-
     private String code;
     private String name;
     private String description;
@@ -29,5 +28,4 @@ public class ProductDto {
     public void setDescription(String description) {
         this.description = description;
     }
-
 }

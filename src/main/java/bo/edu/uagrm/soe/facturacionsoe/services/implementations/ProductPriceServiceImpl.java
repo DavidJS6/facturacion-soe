@@ -1,22 +1,23 @@
-package bo.edu.uagrm.soe.facturacionsoe.database.services.implementations;
+package bo.edu.uagrm.soe.facturacionsoe.services.implementations;
 
 import bo.edu.uagrm.soe.facturacionsoe.database.models.ProductPrice;
 import bo.edu.uagrm.soe.facturacionsoe.database.repositories.ProductPriceRepository;
-import bo.edu.uagrm.soe.facturacionsoe.database.services.ProductPriceService;
-import bo.edu.uagrm.soe.facturacionsoe.database.services.ProductService;
+import bo.edu.uagrm.soe.facturacionsoe.services.ProductPriceService;
+import bo.edu.uagrm.soe.facturacionsoe.services.ProductService;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.ValidatedProductPriceDto;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
 @Service("ProductPriceService")
 public class ProductPriceServiceImpl implements ProductPriceService {
-
-    @Autowired
     private ProductPriceRepository productPriceRepository;
-    @Autowired
     private ProductService productService;
+
+    public ProductPriceServiceImpl(ProductPriceRepository productPriceRepository, ProductService productService) {
+        this.productPriceRepository = productPriceRepository;
+        this.productService = productService;
+    }
 
     @Override
     public void save(ValidatedProductPriceDto productPriceDto) throws Exception {
@@ -65,5 +66,4 @@ public class ProductPriceServiceImpl implements ProductPriceService {
         productPrice.setProduct(productService.getProductById(productPriceDto.getProductIdObject().getValue()));
         productPriceRepository.save(productPrice);
     }
-
 }

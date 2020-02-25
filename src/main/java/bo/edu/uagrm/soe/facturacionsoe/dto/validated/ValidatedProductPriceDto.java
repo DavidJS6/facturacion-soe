@@ -7,7 +7,6 @@ import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.LongObject;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.TimestampObject;
 
 public class ValidatedProductPriceDto {
-
     private DoubleObject amountObject;
     private TimestampObject startTimestampObject;
     private TimestampObject endTimestampObject;
@@ -61,5 +60,4 @@ public class ValidatedProductPriceDto {
     public void setProductIdObject(LongObject productIdObject) {
         this.productIdObject = productIdObject;
     }
-
 }

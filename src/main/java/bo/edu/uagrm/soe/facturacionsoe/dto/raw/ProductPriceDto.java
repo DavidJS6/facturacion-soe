@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.sql.Timestamp;
 
 public class ProductPriceDto {
-
     private Double amount;
     private Timestamp startTimestamp;
     private Timestamp endTimestamp;

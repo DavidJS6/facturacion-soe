@@ -5,7 +5,6 @@ import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.DoubleObject;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.types.LongObject;
 
 public class ValidatedInvoiceItemDto {
-
     private DoubleObject unitPriceObject;
     private DoubleObject quantityObject;
     private DoubleObject itemAmountObject;

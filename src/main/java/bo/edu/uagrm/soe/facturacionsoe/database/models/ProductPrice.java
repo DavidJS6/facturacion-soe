@@ -91,5 +91,4 @@ public class ProductPrice {
     public void setProduct(Product product) {
         this.product = product;
     }
-
 }

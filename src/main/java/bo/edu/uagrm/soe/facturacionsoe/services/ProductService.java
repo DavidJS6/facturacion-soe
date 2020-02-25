@@ -1,4 +1,4 @@
-package bo.edu.uagrm.soe.facturacionsoe.database.services;
+package bo.edu.uagrm.soe.facturacionsoe.services;
 
 import bo.edu.uagrm.soe.facturacionsoe.database.models.Product;
 import bo.edu.uagrm.soe.facturacionsoe.dto.validated.ValidatedProductDto;
@@ -6,7 +6,6 @@ import bo.edu.uagrm.soe.facturacionsoe.dto.validated.ValidatedProductDto;
 import java.util.Collection;
 
 public interface ProductService {
-
     void save(ValidatedProductDto productDto) throws Exception;
 
     void update(Long productId, ValidatedProductDto productDto) throws Exception;
@@ -16,5 +15,4 @@ public interface ProductService {
     Product getProductById(Long ProductId) throws Exception;
 
     Collection<Product> getAllProducts();
-
 }

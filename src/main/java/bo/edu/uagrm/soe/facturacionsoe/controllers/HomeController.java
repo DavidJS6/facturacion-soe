@@ -5,10 +5,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HomeController {
-
     @GetMapping("/")
     public String homePage() {
         return "The backend is ready!";
     }
-
 }
