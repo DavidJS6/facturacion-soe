@@ -1,8 +1,8 @@
 package bo.edu.uagrm.soe.facturacionsoe.controllers;
 
 import bo.edu.uagrm.soe.facturacionsoe.services.ProductService;
-import bo.edu.uagrm.soe.facturacionsoe.dto.raw.ProductDto;
-import bo.edu.uagrm.soe.facturacionsoe.dto.validated.ValidatedProductDto;
+import bo.edu.uagrm.soe.facturacionsoe.dto.request.ProductRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.valueobjects.ProductValueObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,14 +17,14 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveProduct(@RequestBody ProductDto productDto) throws Exception {
-        productService.save(new ValidatedProductDto(productDto));
+    public ResponseEntity<Object> saveProduct(@RequestBody ProductRequestDto productRequestDto) throws Exception {
+        productService.save(new ProductValueObject(productRequestDto));
         return new ResponseEntity<>("El producto ha sido registrado", HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateProduct(@PathVariable Long id, @RequestBody ProductDto productDto) throws Exception {
-        productService.update(id, new ValidatedProductDto(productDto));
+    public ResponseEntity<Object> updateProduct(@PathVariable Long id, @RequestBody ProductRequestDto productRequestDto) throws Exception {
+        productService.update(id, new ProductValueObject(productRequestDto));
         return new ResponseEntity<>("El producto ha sido actualizado", HttpStatus.OK);
     }
 

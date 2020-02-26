@@ -1,14 +1,14 @@
 package bo.edu.uagrm.soe.facturacionsoe.services;
 
 import bo.edu.uagrm.soe.facturacionsoe.database.models.ProductPrice;
-import bo.edu.uagrm.soe.facturacionsoe.dto.validated.ValidatedProductPriceDto;
+import bo.edu.uagrm.soe.facturacionsoe.valueobjects.ProductPriceValueObject;
 
 import java.util.Collection;
 
 public interface ProductPriceService {
-    void save(ValidatedProductPriceDto productPriceDto) throws Exception;
+    void save(ProductPriceValueObject productPriceDto) throws Exception;
 
-    void update(Long productPriceId, ValidatedProductPriceDto productPriceDto) throws Exception;
+    void update(Long productPriceId, ProductPriceValueObject productPriceDto) throws Exception;
 
     void delete(Long productPriceId) throws Exception;
 

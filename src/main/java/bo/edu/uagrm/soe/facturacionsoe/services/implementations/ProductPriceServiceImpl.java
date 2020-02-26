@@ -4,7 +4,7 @@ import bo.edu.uagrm.soe.facturacionsoe.database.models.ProductPrice;
 import bo.edu.uagrm.soe.facturacionsoe.database.repositories.ProductPriceRepository;
 import bo.edu.uagrm.soe.facturacionsoe.services.ProductPriceService;
 import bo.edu.uagrm.soe.facturacionsoe.services.ProductService;
-import bo.edu.uagrm.soe.facturacionsoe.dto.validated.ValidatedProductPriceDto;
+import bo.edu.uagrm.soe.facturacionsoe.valueobjects.ProductPriceValueObject;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -20,13 +20,13 @@ public class ProductPriceServiceImpl implements ProductPriceService {
     }
 
     @Override
-    public void save(ValidatedProductPriceDto productPriceDto) throws Exception {
+    public void save(ProductPriceValueObject productPriceDto) throws Exception {
         ProductPrice productPrice = new ProductPrice();
         saveEntity(productPrice, productPriceDto);
     }
 
     @Override
-    public void update(Long productPriceId, ValidatedProductPriceDto productPriceDto) throws Exception {
+    public void update(Long productPriceId, ProductPriceValueObject productPriceDto) throws Exception {
         ProductPrice productPrice = getProductPriceById(productPriceId);
         saveEntity(productPrice, productPriceDto);
     }
@@ -58,7 +58,7 @@ public class ProductPriceServiceImpl implements ProductPriceService {
         return null;
     }
 
-    private void saveEntity(ProductPrice productPrice, ValidatedProductPriceDto productPriceDto) throws Exception {
+    private void saveEntity(ProductPrice productPrice, ProductPriceValueObject productPriceDto) throws Exception {
         productPrice.setAmount(productPriceDto.getAmountObject().getValue());
         productPrice.setStartTimestamp(productPriceDto.getStartTimestampObject().getValue());
         productPrice.setEndTimestamp(productPriceDto.getEndTimestampObject().getValue());

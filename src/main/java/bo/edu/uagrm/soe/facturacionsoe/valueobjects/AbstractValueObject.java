@@ -1,9 +1,9 @@
-package bo.edu.uagrm.soe.facturacionsoe.dto.validated.types;
+package bo.edu.uagrm.soe.facturacionsoe.valueobjects;
 
-public abstract class AbstractDataTypeValueObject<TObject> {
+public abstract class AbstractValueObject<TObject> {
     protected TObject value;
 
-    public AbstractDataTypeValueObject(TObject value) {
+    public AbstractValueObject(TObject value) {
         validateValue(value);
         this.value = value;
     }

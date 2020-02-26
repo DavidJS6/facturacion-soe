@@ -1,15 +1,17 @@
-package bo.edu.uagrm.soe.facturacionsoe.dto.raw;
+package bo.edu.uagrm.soe.facturacionsoe.dto.request;
 
 import java.sql.Timestamp;
 import java.util.List;
 
-public class InvoiceDto {
+public class InvoiceRequestDto {
     private Long invoiceNumber;
+    private String clientName;
+    private Long nit;
     private Double totalAmount;
     private Timestamp timestamp;
     private String status;
-    private PaymentDto payment;
-    private List<InvoiceItemDto> invoiceItemList;
+    private PaymentRequestDto payment;
+    private List<InvoiceItemRequestDto> invoiceItems;
 
     public Long getInvoiceNumber() {
         return invoiceNumber;
@@ -17,6 +19,22 @@ public class InvoiceDto {
 
     public void setInvoiceNumber(Long invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public Long getNit() {
+        return nit;
+    }
+
+    public void setNit(Long nit) {
+        this.nit = nit;
     }
 
     public Double getTotalAmount() {
@@ -43,19 +61,19 @@ public class InvoiceDto {
         this.status = status;
     }
 
-    public PaymentDto getPayment() {
+    public PaymentRequestDto getPayment() {
         return payment;
     }
 
-    public void setPayment(PaymentDto payment) {
+    public void setPayment(PaymentRequestDto payment) {
         this.payment = payment;
     }
 
-    public List<InvoiceItemDto> getInvoiceItemList() {
-        return invoiceItemList;
+    public List<InvoiceItemRequestDto> getInvoiceItems() {
+        return invoiceItems;
     }
 
-    public void setInvoiceItemList(List<InvoiceItemDto> invoiceItemList) {
-        this.invoiceItemList = invoiceItemList;
+    public void setInvoiceItems(List<InvoiceItemRequestDto> invoiceItems) {
+        this.invoiceItems = invoiceItems;
     }
 }

@@ -1,4 +1,4 @@
-package bo.edu.uagrm.soe.facturacionsoe.dto.raw;
+package bo.edu.uagrm.soe.facturacionsoe.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

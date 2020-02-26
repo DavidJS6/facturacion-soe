@@ -1,6 +1,6 @@
-package bo.edu.uagrm.soe.facturacionsoe.dto.raw;
+package bo.edu.uagrm.soe.facturacionsoe.dto.request;
 
-public class ProductDto {
+public class ProductRequestDto {
     private String code;
     private String name;
     private String description;

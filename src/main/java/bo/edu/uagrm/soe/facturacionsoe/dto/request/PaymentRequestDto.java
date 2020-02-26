@@ -1,8 +1,8 @@
-package bo.edu.uagrm.soe.facturacionsoe.dto.raw;
+package bo.edu.uagrm.soe.facturacionsoe.dto.request;
 
 import java.sql.Timestamp;
 
-public class PaymentDto {
+public class PaymentRequestDto {
     private Double paymentAmount;
     private String paymentCode;
     private Timestamp timestamp;

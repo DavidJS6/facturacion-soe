@@ -3,7 +3,7 @@ package bo.edu.uagrm.soe.facturacionsoe.services.implementations;
 import bo.edu.uagrm.soe.facturacionsoe.database.models.Product;
 import bo.edu.uagrm.soe.facturacionsoe.database.repositories.ProductRepository;
 import bo.edu.uagrm.soe.facturacionsoe.services.ProductService;
-import bo.edu.uagrm.soe.facturacionsoe.dto.validated.ValidatedProductDto;
+import bo.edu.uagrm.soe.facturacionsoe.valueobjects.ProductValueObject;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -17,7 +17,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void save(ValidatedProductDto productDto) throws Exception {
+    public void save(ProductValueObject productDto) throws Exception {
         Product product = new Product();
         /*
         product.setCode(productDto.getCodeObject().getValue());
@@ -34,7 +34,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void update(Long productId, ValidatedProductDto productDto) throws Exception {
+    public void update(Long productId, ProductValueObject productDto) throws Exception {
         Product product = getProductById(productId);
         /*
         product.setCode(productDto.getCodeObject().getValue());
@@ -67,7 +67,7 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll();
     }
 
-    private void saveEntity(Product product, ValidatedProductDto productDto) throws Exception {
+    private void saveEntity(Product product, ProductValueObject productDto) throws Exception {
         product.setCode(productDto.getCodeObject().getValue());
         product.setName(productDto.getNameObject().getValue());
         product.setDescription(productDto.getDescriptionObject().getValue());

@@ -10,10 +10,13 @@ import java.util.Objects;
 public class Invoice {
     private Long id;
     private Long invoiceNumber;
+    private String clientName;
+    private Long nit;
     private Double totalAmount;
     private Timestamp timestamp;
     private String status;
-    private Collection<InvoiceItem> invoiceItemList;
+
+    private Collection<InvoiceItem> invoiceItems;
     private Payment payment;
 
     @Id
@@ -35,6 +38,26 @@ public class Invoice {
 
     public void setInvoiceNumber(Long invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
+    }
+
+    @Basic
+    @Column(name = "client_name")
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    @Basic
+    @Column(name = "nit")
+    public Long getNit() {
+        return nit;
+    }
+
+    public void setNit(Long nit) {
+        this.nit = nit;
     }
 
     @Basic
@@ -74,6 +97,8 @@ public class Invoice {
         Invoice invoice = (Invoice) o;
         return Objects.equals(id, invoice.id) &&
                 Objects.equals(invoiceNumber, invoice.invoiceNumber) &&
+                Objects.equals(clientName, invoice.clientName) &&
+                Objects.equals(nit, invoice.nit) &&
                 Objects.equals(totalAmount, invoice.totalAmount) &&
                 Objects.equals(timestamp, invoice.timestamp) &&
                 Objects.equals(status, invoice.status);
@@ -84,16 +109,16 @@ public class Invoice {
         return Objects.hash(id, invoiceNumber, totalAmount, timestamp, status);
     }
 
-    @OneToMany(mappedBy = "invoice")
-    public Collection<InvoiceItem> getInvoiceItemList() {
-        return invoiceItemList;
+    @OneToMany(mappedBy = "invoice", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    public Collection<InvoiceItem> getInvoiceItems() {
+        return invoiceItems;
     }
 
-    public void setInvoiceItemList(Collection<InvoiceItem> invoiceItemList) {
-        this.invoiceItemList = invoiceItemList;
+    public void setInvoiceItems(Collection<InvoiceItem> invoiceItems) {
+        this.invoiceItems = invoiceItems;
     }
 
-    @OneToOne(mappedBy = "invoice")
+    @OneToOne(mappedBy = "invoice", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Payment getPayment() {
         return payment;
     }

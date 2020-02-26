@@ -1,6 +1,6 @@
-package bo.edu.uagrm.soe.facturacionsoe.dto.raw;
+package bo.edu.uagrm.soe.facturacionsoe.dto.request;
 
-public class InvoiceItemDto {
+public class InvoiceItemRequestDto {
     private Double unitPrice;
     private Double quantity;
     private Double itemAmount;
