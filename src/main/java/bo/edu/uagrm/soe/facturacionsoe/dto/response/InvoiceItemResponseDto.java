@@ -7,6 +7,14 @@ public class InvoiceItemResponseDto {
     private Double itemAmount;
     private Long productId;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Double getUnitPrice() {
         return unitPrice;
     }

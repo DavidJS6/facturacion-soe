@@ -19,6 +19,7 @@ public class InvoiceParser extends DtoEntityParserAbstractImpl<InvoiceRequestDto
     @Override
     public Invoice parseRequestDtoToEntity(InvoiceRequestDto invoiceRequestDto) {
         ModelMapper mapper = new ModelMapper();
+        mapper.addMappings(new InvoiceItemPropertyMap());
         Invoice resultInvoice = mapper.map(invoiceRequestDto, Invoice.class);
         resultInvoice.getPayment().setInvoice(resultInvoice);
         setInvoiceInInvoiceItems(resultInvoice);

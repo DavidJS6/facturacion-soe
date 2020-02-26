@@ -109,7 +109,7 @@ public class Invoice {
         return Objects.hash(id, invoiceNumber, totalAmount, timestamp, status);
     }
 
-    @OneToMany(mappedBy = "invoice", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "invoice", cascade = CascadeType.PERSIST)
     public Collection<InvoiceItem> getInvoiceItems() {
         return invoiceItems;
     }
@@ -118,7 +118,7 @@ public class Invoice {
         this.invoiceItems = invoiceItems;
     }
 
-    @OneToOne(mappedBy = "invoice", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "invoice", cascade = CascadeType.PERSIST)
     public Payment getPayment() {
         return payment;
     }

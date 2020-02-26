@@ -9,6 +9,14 @@ public class PaymentResponseDto {
     private Timestamp timestamp;
     private String paymentMode;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Double getPaymentAmount() {
         return paymentAmount;
     }

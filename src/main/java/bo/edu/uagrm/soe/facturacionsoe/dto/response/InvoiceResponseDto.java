@@ -12,6 +12,14 @@ public class InvoiceResponseDto {
     private PaymentResponseDto payment;
     private List<InvoiceItemResponseDto> invoiceItems;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Long getInvoiceNumber() {
         return invoiceNumber;
     }

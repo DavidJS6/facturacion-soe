@@ -36,11 +36,11 @@ public class InvoiceController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Boolean> deleteInvoice(@PathVariable Long id) throws Exception {
+    public ResponseEntity<Map> deleteInvoice(@PathVariable Long id) throws Exception {
         invoiceService.delete(id);
         Map<String, Object> map = new HashMap<>();
         map.put("success", true);
-        return new ResponseEntity<>(true, HttpStatus.OK);
+        return new ResponseEntity<>(map, HttpStatus.OK);
     }
 
     @PutMapping("/cancel/{id}")
