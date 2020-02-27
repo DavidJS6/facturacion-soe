@@ -1,22 +1,17 @@
 package bo.edu.uagrm.soe.facturacionsoe.services;
 
 import bo.edu.uagrm.soe.facturacionsoe.database.models.ProductPrice;
+import bo.edu.uagrm.soe.facturacionsoe.dto.request.ProductPriceRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.dto.response.ProductPriceResponseDto;
 import bo.edu.uagrm.soe.facturacionsoe.valueobjects.ProductPriceValueObject;
 
 import java.util.Collection;
+import java.util.List;
 
-public interface ProductPriceService {
-    void save(ProductPriceValueObject productPriceDto) throws Exception;
+public interface ProductPriceService extends CrudService<ProductPriceRequestDto, ProductPriceResponseDto, Exception> {
 
-    void update(Long productPriceId, ProductPriceValueObject productPriceDto) throws Exception;
+    List<ProductPriceResponseDto> getAllActivePrices();
 
-    void delete(Long productPriceId) throws Exception;
+    List<ProductPriceResponseDto> getAllActivePricesByProductId(Long productId);
 
-    ProductPrice getProductPriceById(Long productPriceId) throws Exception;
-
-    Collection<ProductPrice> getAllPrices();
-
-    Collection<ProductPrice> getAllActivePrices();
-
-    Collection<ProductPrice> getAllActivePricesByProductId(Long ProductId);
 }

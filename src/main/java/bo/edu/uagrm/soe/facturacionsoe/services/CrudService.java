@@ -11,5 +11,5 @@ public interface CrudService<TRequest, TResponse, TException extends Exception> 
 
     TResponse store(TRequest request) throws TException;
 
-    void delete(Long Long) throws TException;
+    void delete(Long id) throws TException;
 }

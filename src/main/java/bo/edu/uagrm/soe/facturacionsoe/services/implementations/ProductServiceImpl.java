@@ -2,75 +2,71 @@ package bo.edu.uagrm.soe.facturacionsoe.services.implementations;
 
 import bo.edu.uagrm.soe.facturacionsoe.database.models.Product;
 import bo.edu.uagrm.soe.facturacionsoe.database.repositories.ProductRepository;
+import bo.edu.uagrm.soe.facturacionsoe.dto.request.ProductRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.dto.response.ProductResponseDto;
 import bo.edu.uagrm.soe.facturacionsoe.services.ProductService;
+import bo.edu.uagrm.soe.facturacionsoe.services.implementations.parsers.ProductParser;
 import bo.edu.uagrm.soe.facturacionsoe.valueobjects.ProductValueObject;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 
 @Service("ProductService")
 public class ProductServiceImpl implements ProductService {
+
     private ProductRepository productRepository;
+    private ProductParser productParser;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceImpl(ProductRepository productRepository, ProductParser productParser) {
         this.productRepository = productRepository;
+        this.productParser = productParser;
     }
 
     @Override
-    public void save(ProductValueObject productDto) throws Exception {
+    public List<ProductResponseDto> findAll() {
+        List<Product> productList = productRepository.findAll();
+        return productParser.parseEntitiesToResponseDtos(productList);
+    }
+
+    @Override
+    public ProductResponseDto findById(Long id) throws Exception {
+        Product product = getProductById(id);
+        return productParser.parseEntityToResponseDto(product);
+    }
+
+    @Override
+    public ProductResponseDto update(Long id, ProductRequestDto productRequestDto) throws Exception {
+        ProductValueObject validatedProduct = new ProductValueObject(productRequestDto);
+        Product product = getProductById(id);
+        product = saveEntity(product, validatedProduct);
+        return productParser.parseEntityToResponseDto(product);
+    }
+
+    @Override
+    public ProductResponseDto store(ProductRequestDto productRequestDto) throws Exception {
+        ProductValueObject validatedProduct = new ProductValueObject(productRequestDto);
         Product product = new Product();
-        /*
-        product.setCode(productDto.getCodeObject().getValue());
-        product.setName(productDto.getNameObject().getValue());
-        product.setDescription(productDto.getDescriptionObject().getValue());
-
-        List<ProductPrice> list = new ArrayList<>();
-        list.add(productPriceService.getProductPriceById(productDto.getProductPriceIdObject().getValue()));
-        product.setProductPriceList(list);
-
-        productRepository.save(product);
-        */
-        saveEntity(product, productDto);
+        product = saveEntity(product, validatedProduct);
+        return productParser.parseEntityToResponseDto(product);
     }
 
     @Override
-    public void update(Long productId, ProductValueObject productDto) throws Exception {
-        Product product = getProductById(productId);
-        /*
-        product.setCode(productDto.getCodeObject().getValue());
-        product.setName(productDto.getNameObject().getValue());
-        product.setDescription(productDto.getDescriptionObject().getValue());
-
-        List<ProductPrice> list = new ArrayList<>();
-        list.add(productPriceService.getProductPriceById(productDto.getProductPriceIdObject().getValue()));
-        product.setProductPriceList(list);
-
-        productRepository.save(product);
-        */
-        saveEntity(product, productDto);
-    }
-
-    @Override
-    public void delete(Long productId) throws Exception {
-        Product product = getProductById(productId);
+    public void delete(Long id) throws Exception {
+        Product product = getProductById(id);
         productRepository.delete(product);
     }
 
-    @Override
-    public Product getProductById(Long productId) throws Exception {
-        return productRepository.findById(productId)
+    private Product getProductById(Long id) throws Exception {
+        return productRepository.findById(id)
                 .orElseThrow(() -> new Exception("It does not exist a product with the specified id"));
     }
 
-    @Override
-    public Collection<Product> getAllProducts() {
-        return productRepository.findAll();
-    }
-
-    private void saveEntity(Product product, ProductValueObject productDto) throws Exception {
+    private Product saveEntity(Product product, ProductValueObject productDto) {
         product.setCode(productDto.getCodeObject().getValue());
         product.setName(productDto.getNameObject().getValue());
         product.setDescription(productDto.getDescriptionObject().getValue());
-        productRepository.save(product);
+        return productRepository.save(product);
     }
+
 }

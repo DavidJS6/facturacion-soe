@@ -1,6 +1,6 @@
 package bo.edu.uagrm.soe.facturacionsoe.valueobjects;
 
-import bo.edu.uagrm.soe.facturacionsoe.dto.request.ProductPriceDto;
+import bo.edu.uagrm.soe.facturacionsoe.dto.request.ProductPriceRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.valueobjects.types.BooleanNotNull;
 import bo.edu.uagrm.soe.facturacionsoe.valueobjects.types.LongNotNull;
 import bo.edu.uagrm.soe.facturacionsoe.valueobjects.types.TimestampValueObject;
@@ -12,12 +12,12 @@ public class ProductPriceValueObject {
     private BooleanNotNull isActiveObject;
     private LongNotNull productIdObject;
 
-    public ProductPriceValueObject(ProductPriceDto productPriceDto) {
-        this.amountObject = new PositiveDouble(productPriceDto.getAmount());
-        this.startTimestampObject = new TimestampValueObject(productPriceDto.getStartTimestamp());
-        this.endTimestampObject = new TimestampValueObject(productPriceDto.getEndTimestamp());
-        this.isActiveObject = new BooleanNotNull(productPriceDto.getActive());
-        this.productIdObject = new LongNotNull(productPriceDto.getProductId());
+    public ProductPriceValueObject(ProductPriceRequestDto productPriceRequestDto) {
+        this.amountObject = new PositiveDouble(productPriceRequestDto.getAmount());
+        this.startTimestampObject = new TimestampValueObject(productPriceRequestDto.getStartTimestamp());
+        this.endTimestampObject = new TimestampValueObject(productPriceRequestDto.getEndTimestamp());
+        this.isActiveObject = new BooleanNotNull(productPriceRequestDto.getActive());
+        this.productIdObject = new LongNotNull(productPriceRequestDto.getProductId());
     }
 
     public PositiveDouble getAmountObject() {

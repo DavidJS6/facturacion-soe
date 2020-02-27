@@ -1,8 +1,7 @@
 package bo.edu.uagrm.soe.facturacionsoe.controllers;
 
 import bo.edu.uagrm.soe.facturacionsoe.services.ProductPriceService;
-import bo.edu.uagrm.soe.facturacionsoe.dto.request.ProductPriceDto;
-import bo.edu.uagrm.soe.facturacionsoe.valueobjects.ProductPriceValueObject;
+import bo.edu.uagrm.soe.facturacionsoe.dto.request.ProductPriceRequestDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,15 +16,13 @@ public class ProductPriceController {
     }
 
     @PostMapping
-    public ResponseEntity<Object> saveProductPrice(@RequestBody ProductPriceDto productPriceDto) throws Exception {
-        productPriceService.save(new ProductPriceValueObject(productPriceDto));
-        return new ResponseEntity<>("El precio del producto ha sido registrado", HttpStatus.OK);
+    public ResponseEntity<Object> saveProductPrice(@RequestBody ProductPriceRequestDto productPriceRequestDto) throws Exception {
+        return new ResponseEntity<>(productPriceService.store(productPriceRequestDto), HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Object> updateProductPrice(@PathVariable Long id, @RequestBody ProductPriceDto productPriceDto) throws Exception {
-        productPriceService.update(id, new ProductPriceValueObject(productPriceDto));
-        return new ResponseEntity<>("El precio del producto ha sido actualizado", HttpStatus.OK);
+    public ResponseEntity<Object> updateProductPrice(@PathVariable Long id, @RequestBody ProductPriceRequestDto productPriceRequestDto) throws Exception {
+        return new ResponseEntity<>(productPriceService.update(id, productPriceRequestDto), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -36,11 +33,11 @@ public class ProductPriceController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getProductPrice(@PathVariable Long id) throws Exception {
-        return new ResponseEntity<>(productPriceService.getProductPriceById(id), HttpStatus.OK);
+        return new ResponseEntity<>(productPriceService.findById(id), HttpStatus.OK);
     }
 
     @GetMapping()
     public ResponseEntity<Object> getAllProductPrices() {
-        return new ResponseEntity<>(productPriceService.getAllPrices(), HttpStatus.OK);
+        return new ResponseEntity<>(productPriceService.findAll(), HttpStatus.OK);
     }
 }

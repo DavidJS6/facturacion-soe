@@ -2,68 +2,80 @@ package bo.edu.uagrm.soe.facturacionsoe.services.implementations;
 
 import bo.edu.uagrm.soe.facturacionsoe.database.models.ProductPrice;
 import bo.edu.uagrm.soe.facturacionsoe.database.repositories.ProductPriceRepository;
+import bo.edu.uagrm.soe.facturacionsoe.dto.request.ProductPriceRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.dto.response.ProductPriceResponseDto;
 import bo.edu.uagrm.soe.facturacionsoe.services.ProductPriceService;
 import bo.edu.uagrm.soe.facturacionsoe.services.ProductService;
+import bo.edu.uagrm.soe.facturacionsoe.services.implementations.parsers.ProductPriceParser;
 import bo.edu.uagrm.soe.facturacionsoe.valueobjects.ProductPriceValueObject;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 
 @Service("ProductPriceService")
 public class ProductPriceServiceImpl implements ProductPriceService {
+
     private ProductPriceRepository productPriceRepository;
     private ProductService productService;
+    private ProductPriceParser productPriceParser;
 
-    public ProductPriceServiceImpl(ProductPriceRepository productPriceRepository, ProductService productService) {
+    public ProductPriceServiceImpl(ProductPriceRepository productPriceRepository, ProductService productService, ProductPriceParser productPriceParser) {
         this.productPriceRepository = productPriceRepository;
         this.productService = productService;
+        this.productPriceParser = productPriceParser;
     }
 
     @Override
-    public void save(ProductPriceValueObject productPriceDto) throws Exception {
-        ProductPrice productPrice = new ProductPrice();
-        saveEntity(productPrice, productPriceDto);
+    public List<ProductPriceResponseDto> getAllActivePrices() {
+        List<ProductPrice> productPriceList = productPriceRepository.getAllActivePrices();
+        return productPriceParser.parseEntitiesToResponseDtos(productPriceList);
     }
 
     @Override
-    public void update(Long productPriceId, ProductPriceValueObject productPriceDto) throws Exception {
-        ProductPrice productPrice = getProductPriceById(productPriceId);
-        saveEntity(productPrice, productPriceDto);
+    public List<ProductPriceResponseDto> getAllActivePricesByProductId(Long productId) {
+        List<ProductPrice> productPriceList = productPriceRepository.getAllActivePricesByProductId(productId);
+        return productPriceParser.parseEntitiesToResponseDtos(productPriceList);
     }
 
     @Override
-    public void delete(Long productPriceId) throws Exception {
-        ProductPrice productPrice = getProductPriceById(productPriceId);
+    public List<ProductPriceResponseDto> findAll() {
+        List<ProductPrice> productPriceList = productPriceRepository.findAll();
+        return productPriceParser.parseEntitiesToResponseDtos(productPriceList);
+    }
+
+    @Override
+    public ProductPriceResponseDto findById(Long id) throws Exception {
+        ProductPrice productPrice = getProductPriceById(id);
+        return productPriceParser.parseEntityToResponseDto(productPrice);
+    }
+
+    @Override
+    public ProductPriceResponseDto update(Long id, ProductPriceRequestDto productPriceRequestDto) throws Exception {
+        ProductPriceValueObject validatedProductPrice = new ProductPriceValueObject(productPriceRequestDto);
+        ProductPrice productPrice = productPriceParser.parseRequestDtoToEntity(productPriceRequestDto);
+        productPrice.getProduct().setId(productPriceRequestDto.getProductId());
+        productPrice = productPriceRepository.save(productPrice);
+        return productPriceParser.parseEntityToResponseDto(productPrice);
+    }
+
+    @Override
+    public ProductPriceResponseDto store(ProductPriceRequestDto productPriceRequestDto) throws Exception {
+        ProductPriceValueObject validatedProductPrice = new ProductPriceValueObject(productPriceRequestDto);
+        ProductPrice productPrice = productPriceParser.parseRequestDtoToEntity(productPriceRequestDto);
+        productPrice = productPriceRepository.save(productPrice);
+        return productPriceParser.parseEntityToResponseDto(productPrice);
+    }
+
+    @Override
+    public void delete(Long id) throws Exception {
+        ProductPrice productPrice = getProductPriceById(id);
         productPriceRepository.delete(productPrice);
     }
 
-    @Override
-    public ProductPrice getProductPriceById(Long productPriceId) throws Exception {
-        return productPriceRepository.findById(productPriceId)
+    private ProductPrice getProductPriceById(Long id) throws Exception {
+        return productPriceRepository.findById(id)
                 .orElseThrow(() -> new Exception("It does not exist a product price with the specified id"));
     }
 
-    @Override
-    public Collection<ProductPrice> getAllPrices() {
-        return productPriceRepository.findAll();
-    }
-
-    @Override
-    public Collection<ProductPrice> getAllActivePrices() {
-        return null;
-    }
-
-    @Override
-    public Collection<ProductPrice> getAllActivePricesByProductId(Long ProductId) {
-        return null;
-    }
-
-    private void saveEntity(ProductPrice productPrice, ProductPriceValueObject productPriceDto) throws Exception {
-        productPrice.setAmount(productPriceDto.getAmountObject().getValue());
-        productPrice.setStartTimestamp(productPriceDto.getStartTimestampObject().getValue());
-        productPrice.setEndTimestamp(productPriceDto.getEndTimestampObject().getValue());
-        productPrice.setActive(productPriceDto.getIsActiveObject().getValue());
-        productPrice.setProduct(productService.getProductById(productPriceDto.getProductIdObject().getValue()));
-        productPriceRepository.save(productPrice);
-    }
 }
