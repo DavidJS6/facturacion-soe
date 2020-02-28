@@ -2,7 +2,8 @@ package bo.edu.uagrm.soe.facturacionsoe.valueobjects;
 
 import bo.edu.uagrm.soe.facturacionsoe.dto.request.ProductRequestDto;
 
-public class ProductValueObject {
+public class ProductValueObject extends AbstractValueObject<ProductRequestDto> {
+    /*
     private String50 codeObject;
     private String50 nameObject;
     private String50 descriptionObject;
@@ -36,4 +37,17 @@ public class ProductValueObject {
     public void setDescriptionObject(String50 descriptionObject) {
         this.descriptionObject = descriptionObject;
     }
+    */
+
+    public ProductValueObject(ProductRequestDto value) {
+        super(value);
+    }
+
+    @Override
+    protected void validateValue(ProductRequestDto value) throws RuntimeException {
+        new String50(value.getCode());
+        new String50(value.getName());
+        new String50(value.getDescription());
+    }
+
 }

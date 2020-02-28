@@ -51,18 +51,19 @@ public class ProductPriceServiceImpl implements ProductPriceService {
     }
 
     @Override
-    public ProductPriceResponseDto update(Long id, ProductPriceRequestDto productPriceRequestDto) throws Exception {
+    public ProductPriceResponseDto update(Long id, ProductPriceRequestDto productPriceRequestDto) {
         ProductPriceValueObject validatedProductPrice = new ProductPriceValueObject(productPriceRequestDto);
-        ProductPrice productPrice = productPriceParser.parseRequestDtoToEntity(productPriceRequestDto);
-        productPrice.getProduct().setId(productPriceRequestDto.getProductId());
+        ProductPrice productPrice = productPriceParser.parseRequestDtoToEntity(validatedProductPrice.getValue());
+        productPrice.setId(id);
+        productPrice.getProduct().setId(validatedProductPrice.getValue().getProductId());
         productPrice = productPriceRepository.save(productPrice);
         return productPriceParser.parseEntityToResponseDto(productPrice);
     }
 
     @Override
-    public ProductPriceResponseDto store(ProductPriceRequestDto productPriceRequestDto) throws Exception {
+    public ProductPriceResponseDto store(ProductPriceRequestDto productPriceRequestDto) {
         ProductPriceValueObject validatedProductPrice = new ProductPriceValueObject(productPriceRequestDto);
-        ProductPrice productPrice = productPriceParser.parseRequestDtoToEntity(productPriceRequestDto);
+        ProductPrice productPrice = productPriceParser.parseRequestDtoToEntity(validatedProductPrice.getValue());
         productPrice = productPriceRepository.save(productPrice);
         return productPriceParser.parseEntityToResponseDto(productPrice);
     }

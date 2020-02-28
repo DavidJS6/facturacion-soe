@@ -5,7 +5,8 @@ import bo.edu.uagrm.soe.facturacionsoe.valueobjects.types.BooleanNotNull;
 import bo.edu.uagrm.soe.facturacionsoe.valueobjects.types.LongNotNull;
 import bo.edu.uagrm.soe.facturacionsoe.valueobjects.types.TimestampValueObject;
 
-public class ProductPriceValueObject {
+public class ProductPriceValueObject extends AbstractValueObject<ProductPriceRequestDto> {
+    /*
     private PositiveDouble amountObject;
     private TimestampValueObject startTimestampObject;
     private TimestampValueObject endTimestampObject;
@@ -59,4 +60,19 @@ public class ProductPriceValueObject {
     public void setProductIdObject(LongNotNull productIdObject) {
         this.productIdObject = productIdObject;
     }
+    */
+
+    public ProductPriceValueObject(ProductPriceRequestDto value) {
+        super(value);
+    }
+
+    @Override
+    protected void validateValue(ProductPriceRequestDto value) throws RuntimeException {
+        new PositiveDouble(value.getAmount());
+        new TimestampValueObject(value.getStartTimestamp());
+        new TimestampValueObject(value.getEndTimestamp());
+        new BooleanNotNull(value.getActive());
+        new LongNotNull(value.getProductId());
+    }
+
 }

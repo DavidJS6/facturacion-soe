@@ -36,18 +36,18 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductResponseDto update(Long id, ProductRequestDto productRequestDto) throws Exception {
+    public ProductResponseDto update(Long id, ProductRequestDto productRequestDto) {
         ProductValueObject validatedProduct = new ProductValueObject(productRequestDto);
-        Product product = getProductById(id);
-        product = saveEntity(product, validatedProduct);
+        Product product = productParser.parseRequestDtoToEntity(validatedProduct.getValue());
+        product.setId(id);
         return productParser.parseEntityToResponseDto(product);
     }
 
     @Override
-    public ProductResponseDto store(ProductRequestDto productRequestDto) throws Exception {
+    public ProductResponseDto store(ProductRequestDto productRequestDto) {
         ProductValueObject validatedProduct = new ProductValueObject(productRequestDto);
-        Product product = new Product();
-        product = saveEntity(product, validatedProduct);
+        Product product = productParser.parseRequestDtoToEntity(validatedProduct.getValue());
+        product = productRepository.save(product);
         return productParser.parseEntityToResponseDto(product);
     }
 
@@ -60,13 +60,6 @@ public class ProductServiceImpl implements ProductService {
     private Product getProductById(Long id) throws Exception {
         return productRepository.findById(id)
                 .orElseThrow(() -> new Exception("It does not exist a product with the specified id"));
-    }
-
-    private Product saveEntity(Product product, ProductValueObject productDto) {
-        product.setCode(productDto.getCodeObject().getValue());
-        product.setName(productDto.getNameObject().getValue());
-        product.setDescription(productDto.getDescriptionObject().getValue());
-        return productRepository.save(product);
     }
 
 }
