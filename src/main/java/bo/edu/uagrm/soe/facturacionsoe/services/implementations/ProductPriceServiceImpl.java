@@ -64,6 +64,7 @@ public class ProductPriceServiceImpl implements ProductPriceService {
     public ProductPriceResponseDto store(ProductPriceRequestDto productPriceRequestDto) {
         ProductPriceValueObject validatedProductPrice = new ProductPriceValueObject(productPriceRequestDto);
         ProductPrice productPrice = productPriceParser.parseRequestDtoToEntity(validatedProductPrice.getValue());
+        productPrice.setId(null);
         productPrice = productPriceRepository.save(productPrice);
         return productPriceParser.parseEntityToResponseDto(productPrice);
     }

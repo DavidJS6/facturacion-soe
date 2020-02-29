@@ -67,7 +67,7 @@ CREATE TABLE payments
 (
 	id bigint NOT NULL   DEFAULT NEXTVAL(('"payments_id_seq"'::text)::regclass),
 	payment_amount double precision NOT NULL,
-	payment_code varchar(255) NOT NULL,
+	payment_code varchar(255),
 	timestamp timestamp(3) without time zone NOT NULL,
 	payment_mode varchar(50) NOT NULL,
 	invoice_id bigint NOT NULL

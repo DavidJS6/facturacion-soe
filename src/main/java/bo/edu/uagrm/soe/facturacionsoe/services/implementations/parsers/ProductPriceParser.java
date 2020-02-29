@@ -19,6 +19,7 @@ public class ProductPriceParser extends DtoEntityParserAbstractImpl<ProductPrice
     @Override
     public ProductPrice parseRequestDtoToEntity(ProductPriceRequestDto productPriceRequestDto) {
         ModelMapper mapper = new ModelMapper();
+        mapper.addMappings(new ProductPricePropertyMap());
         return mapper.map(productPriceRequestDto, ProductPrice.class);
     }
 

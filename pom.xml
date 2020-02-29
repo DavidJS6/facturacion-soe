@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>bo.edu.uagrm.soe</groupId>
 	<artifactId>facturacion-soe</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>facturacion-soe</name>
 	<description>Proyecto para el modulo 6 de la maestría en dirección estratégica en ingeniería de software</description>
 
