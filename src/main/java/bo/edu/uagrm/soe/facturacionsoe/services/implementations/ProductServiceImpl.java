@@ -40,6 +40,7 @@ public class ProductServiceImpl implements ProductService {
         ProductValueObject validatedProduct = new ProductValueObject(productRequestDto);
         Product product = productParser.parseRequestDtoToEntity(validatedProduct.getValue());
         product.setId(id);
+        product = productRepository.save(product);
         return productParser.parseEntityToResponseDto(product);
     }
 

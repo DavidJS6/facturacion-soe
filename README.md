@@ -12,23 +12,29 @@ dirección estratégica en ingeniería de software.
     - Password: facturacion-soe
     
     Opcionalmente se puede configurar el usuario y la contraseña para la conexión con la
-    base de datos en el archivo [application.properties](src/main/resources/application.properties)
+    base de datos en el archivo [application.properties](src/main/resources/application.properties) 
+    que se encuentra en resources
     
-3. Crear una base de datos en PostgreSQL con el nombre de "facturacion-soe"
+3. Crear una base de datos en PostgreSQL con el nombre de "facturacion-soe". Para ello 
+se puede utilizar el gestor "pgAdmin", el cual se puede descargar en el siguiente 
+[link](https://www.enterprisedb.com/downloads/postgres-postgresql-downloads) 
+(De preferencia descargar la versión 10.12)
 
 4. Proporcionar todos los privilegios sobre la base de datos creada en el punto 3 
 al usuario creado en el punto 2
 
 5. Ejecutar el script del esquema de la base de datos 
-[schema_1.1.0.sql](src/main/resources/database/schema_1.1.0.sql)
+[schema_1.1.0.sql](src/main/resources/database/schema_1.1.0.sql) (el cual se encuentra en 
+la ruta resources\database)
 
 6. Ejecutar el archivo [facturacion-soe-1.0.0.jar](bin/facturacion-soe-1.0.0.jar) utilizando
-una consola de comandos
+el siguiente comando desde la raíz del proyecto
 
         java -jar bin/facturacion-soe-1.0.0.jar 
 
-7. Cargar la [colección de PostMan](src/main/resources/postman/collection.json) y el
-[environment](src/main/resources/postman/environment.json)
+7. Cargar los archivos [collection](src/main/resources/postman/collection.json) y
+[environment](src/main/resources/postman/environment.json) (Los cuales se encuentran en 
+la ruta resources\postman) en el programa [Postman](https://www.postman.com/downloads/)
 
 ### Lista de servicios web
 
