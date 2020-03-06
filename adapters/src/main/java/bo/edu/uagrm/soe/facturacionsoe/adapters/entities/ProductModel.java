@@ -1,8 +1,6 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.entities;
 
-import bo.edu.uagrm.soe.facturacionsoe.entities.InvoiceItem;
 import bo.edu.uagrm.soe.facturacionsoe.entities.Product;
-import bo.edu.uagrm.soe.facturacionsoe.entities.ProductPrice;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
@@ -75,9 +73,10 @@ public class ProductModel extends Product<InvoiceItemModel, ProductPriceModel> {
         return super.getInvoiceItemList();
     }
 
-    /*public void setProductPriceList(Collection<ProductPriceModel> productPriceList) {
-        this.productPriceList = productPriceList;
-    }*/
+    @Override
+    public void setInvoiceItemList(Collection<InvoiceItemModel> invoiceItemList) {
+        super.setInvoiceItemList(invoiceItemList);
+    }
 
     @Override
     @OneToMany(mappedBy = "product")
@@ -86,4 +85,8 @@ public class ProductModel extends Product<InvoiceItemModel, ProductPriceModel> {
         return super.getProductPriceList();
     }
 
+    @Override
+    public void setProductPriceList(Collection<ProductPriceModel> productPriceList) {
+        super.setProductPriceList(productPriceList);
+    }
 }

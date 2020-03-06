@@ -9,7 +9,6 @@ import java.util.List;
 
 @Component
 public class ProductRepositoryImpl implements ProductRepository<ProductModel> {
-
     private final ProductSpringRepository repository;
 
     public ProductRepositoryImpl(ProductSpringRepository repository) {
@@ -35,5 +34,4 @@ public class ProductRepositoryImpl implements ProductRepository<ProductModel> {
     public void deleteById(Long id) {
         repository.deleteById(id);
     }
-
 }

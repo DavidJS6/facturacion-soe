@@ -1,8 +1,8 @@
-package bo.edu.uagrm.soe.facturacionsoe.adapters.controllers.services.implementations;
+package bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations;
 
+import bo.edu.uagrm.soe.facturacionsoe.adapters.services.ProductPriceService;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.ProductPriceRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.ProductPriceResponseDto;
-import bo.edu.uagrm.soe.facturacionsoe.adapters.controllers.services.ProductPriceService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.getall;
 
-import bo.edu.uagrm.soe.facturacionsoe.usecases.ports.cqrs.Request;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.cqrs.Request;
 
 import java.util.List;
 

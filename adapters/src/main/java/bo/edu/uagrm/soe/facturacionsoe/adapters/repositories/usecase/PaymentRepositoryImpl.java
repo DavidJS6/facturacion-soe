@@ -2,11 +2,11 @@ package bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.usecase;
 
 import bo.edu.uagrm.soe.facturacionsoe.adapters.entities.PaymentModel;
 import bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.spring.PaymentSpringRepository;
-import bo.edu.uagrm.soe.facturacionsoe.entities.Payment;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.ports.repositories.PaymentRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+
 @Component
 public class PaymentRepositoryImpl implements PaymentRepository<PaymentModel> {
 

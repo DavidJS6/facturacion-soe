@@ -1,8 +1,8 @@
-package bo.edu.uagrm.soe.facturacionsoe.adapters.controllers.services.implementations;
+package bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations;
 
+import bo.edu.uagrm.soe.facturacionsoe.adapters.services.InvoiceService;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.InvoiceResponseDto;
-import bo.edu.uagrm.soe.facturacionsoe.adapters.controllers.services.InvoiceService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -87,4 +87,5 @@ public class InvoiceServiceImpl implements InvoiceService {
         repository.save(invoice);
         return parser.parseEntityToResponseDto(invoice);
     }
-*/}
+*/
+}

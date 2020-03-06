@@ -1,7 +1,7 @@
 package bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects;
 
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceItemRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects.types.LongNotNull;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects.types.StringNotNull;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects.types.TimestampValueObject;

@@ -1,9 +1,9 @@
-package bo.edu.uagrm.soe.facturacionsoe.adapters.controllers.services.implementations.parsers;
+package bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations.parsers;
 
+import bo.edu.uagrm.soe.facturacionsoe.entities.ProductPrice;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.parsing.DtoEntityParserAbstractImpl;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.ProductPriceRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.ProductPriceResponseDto;
-import bo.edu.uagrm.soe.facturacionsoe.entities.ProductPrice;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

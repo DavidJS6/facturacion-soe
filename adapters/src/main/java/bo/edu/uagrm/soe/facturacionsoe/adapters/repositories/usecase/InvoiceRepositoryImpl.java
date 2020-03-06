@@ -2,7 +2,7 @@ package bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.usecase;
 
 import bo.edu.uagrm.soe.facturacionsoe.adapters.entities.InvoiceModel;
 import bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.spring.InvoiceSpringRepository;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.ports.InvoiceRepository;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.ports.repositories.InvoiceRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

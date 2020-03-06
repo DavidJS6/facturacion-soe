@@ -1,6 +1,6 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.controllers;
 
-import bo.edu.uagrm.soe.facturacionsoe.adapters.controllers.services.ProductService;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.services.ProductService;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.ProductRequestDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

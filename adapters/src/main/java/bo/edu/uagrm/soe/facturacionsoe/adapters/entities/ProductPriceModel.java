@@ -1,6 +1,5 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.entities;
 
-import bo.edu.uagrm.soe.facturacionsoe.entities.Product;
 import bo.edu.uagrm.soe.facturacionsoe.entities.ProductPrice;
 
 import javax.persistence.*;
@@ -72,5 +71,10 @@ public class ProductPriceModel extends ProductPrice<ProductModel> {
     @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
     public ProductModel getProduct() {
         return super.getProduct();
+    }
+
+    @Override
+    public void setProduct(ProductModel product) {
+        super.setProduct(product);
     }
 }

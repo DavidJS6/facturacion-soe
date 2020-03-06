@@ -39,4 +39,5 @@ public class InvoiceController {
     public ResponseEntity<InvoiceResponseDto> cancelInvoice(@PathVariable Long id) throws Exception {
         return new ResponseEntity<>(invoiceService.cancel(id), HttpStatus.OK);
     }
-*/}
+*/
+}

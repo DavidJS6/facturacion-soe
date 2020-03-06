@@ -1,415 +1,415 @@
 {
-	"info": {
-		"_postman_id": "f290d55a-1b2a-4a96-a6c1-5d61b36a051d",
-		"name": "Facturaion SOE",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Products",
-			"item": [
-				{
-					"name": "Get all products",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/products",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"products"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get a specific product",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/products/{{existing_product_id}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"products",
-								"{{existing_product_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Store Product",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"code\": \"producto-2\",\n\t\"name\": \"Producto 2\",\n\t\"description\": \"Este es un producto de prueba\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/products",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"products"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Product",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"code\": \"producto-1\",\n\t\"name\": \"Producto 1\",\n\t\"description\": \"Este es un producto de prueba - MODIFICADO\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/products/{{existing_product_id}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"products",
-								"{{existing_product_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Product",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/products/2",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"products",
-								"2"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Prices",
-			"item": [
-				{
-					"name": "Get all Prices",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/product-prices",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"product-prices"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get a Specific Price",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/product-prices/{{existing_product_price_id}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"product-prices",
-								"{{existing_product_price_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Store a Price",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"amount\": 24.0,\n\t\"startTimestamp\": \"2020-02-25T13:50:00.000\",\n\t\"endTimestamp\": \"2020-03-30T18:50:00.000\",\n\t\"isActive\": true,\n\t\"productId\": {{existing_product_id}}\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/product-prices",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"product-prices"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Update Price",
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"amount\": 40.0,\n\t\"startTimestamp\": \"2020-02-24T18:50:00.000\",\n\t\"endTimestamp\": \"2020-02-28T18:50:00.000\",\n\t\"isActive\": true,\n\t\"productId\": {{existing_product_id}}\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/product-prices/{{existing_product_price_id}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"product-prices",
-								"{{existing_product_price_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete Price",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/product-prices/2",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"product-prices",
-								"2"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		},
-		{
-			"name": "Invoices",
-			"item": [
-				{
-					"name": "Store Invoice",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"invoiceNumber\": 100001,\n\t\"clientName\": \"Wilton Acosta\",\n\t\"nit\": 334288022,\n    \"totalAmount\": 123,\n    \"timestamp\": \"2020-02-26T12:00:00.000\",\n    \"status\": \"ISSUED\",\n    \"payment\": {\n    \t\"paymentAmount\": 123,\n    \t\"paymentCode\": null,\n    \t\"timestamp\": \"2020-02-26T12:00:00.000\",\n    \t\"paymentMode\": \"CASH\"\n    },\n    \"invoiceItems\": [\n    \t{\n    \t\t\"unitPrice\": 123,\n    \t\t\"quantity\": 1,\n\t\t    \"itemAmount\": 123,\n\t\t    \"productId\": {{existing_product_id}}\n    \t}\n    ]\n}",
-							"options": {
-								"raw": {}
-							}
-						},
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/invoices",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"invoices"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get a specific invoice",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/invoices/{{existing_invoice_id}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"invoices",
-								"{{existing_invoice_id}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get all invoices",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/invoices",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"invoices"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete invoice",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/invoices/2",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"invoices",
-								"2"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Cancel invoice",
-					"request": {
-						"method": "PUT",
-						"header": [],
-						"url": {
-							"raw": "{{protocol}}://{{host}}/api/facturacion-soe/invoices/cancel/{{existing_invoice_id}}",
-							"protocol": "{{protocol}}",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"api",
-								"facturacion-soe",
-								"invoices",
-								"cancel",
-								"{{existing_invoice_id}}"
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"protocolProfileBehavior": {}
-		}
-	],
-	"protocolProfileBehavior": {}
+  "info": {
+    "_postman_id": "f290d55a-1b2a-4a96-a6c1-5d61b36a051d",
+    "name": "Facturaion SOE",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get all products",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/products",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a specific product",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/products/{{existing_product_id}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "products",
+                "{{existing_product_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Store Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"code\": \"producto-2\",\n\t\"name\": \"Producto 2\",\n\t\"description\": \"Este es un producto de prueba\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/products",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"code\": \"producto-1\",\n\t\"name\": \"Producto 1\",\n\t\"description\": \"Este es un producto de prueba - MODIFICADO\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/products/{{existing_product_id}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "products",
+                "{{existing_product_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/products/2",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "products",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Prices",
+      "item": [
+        {
+          "name": "Get all Prices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/product-prices",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "product-prices"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a Specific Price",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/product-prices/{{existing_product_price_id}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "product-prices",
+                "{{existing_product_price_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Store a Price",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"amount\": 24.0,\n\t\"startTimestamp\": \"2020-02-25T13:50:00.000\",\n\t\"endTimestamp\": \"2020-03-30T18:50:00.000\",\n\t\"isActive\": true,\n\t\"productId\": {{existing_product_id}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/product-prices",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "product-prices"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Price",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"amount\": 40.0,\n\t\"startTimestamp\": \"2020-02-24T18:50:00.000\",\n\t\"endTimestamp\": \"2020-02-28T18:50:00.000\",\n\t\"isActive\": true,\n\t\"productId\": {{existing_product_id}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/product-prices/{{existing_product_price_id}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "product-prices",
+                "{{existing_product_price_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Price",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/product-prices/2",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "product-prices",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    },
+    {
+      "name": "Invoices",
+      "item": [
+        {
+          "name": "Store Invoice",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"invoiceNumber\": 100001,\n\t\"clientName\": \"Wilton Acosta\",\n\t\"nit\": 334288022,\n    \"totalAmount\": 123,\n    \"timestamp\": \"2020-02-26T12:00:00.000\",\n    \"status\": \"ISSUED\",\n    \"payment\": {\n    \t\"paymentAmount\": 123,\n    \t\"paymentCode\": null,\n    \t\"timestamp\": \"2020-02-26T12:00:00.000\",\n    \t\"paymentMode\": \"CASH\"\n    },\n    \"invoiceItems\": [\n    \t{\n    \t\t\"unitPrice\": 123,\n    \t\t\"quantity\": 1,\n\t\t    \"itemAmount\": 123,\n\t\t    \"productId\": {{existing_product_id}}\n    \t}\n    ]\n}",
+              "options": {
+                "raw": {}
+              }
+            },
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/invoices",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "invoices"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get a specific invoice",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/invoices/{{existing_invoice_id}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "invoices",
+                "{{existing_invoice_id}}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all invoices",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/invoices",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "invoices"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete invoice",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/invoices/2",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "invoices",
+                "2"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel invoice",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{protocol}}://{{host}}/api/facturacion-soe/invoices/cancel/{{existing_invoice_id}}",
+              "protocol": "{{protocol}}",
+              "host": [
+                "{{host}}"
+              ],
+              "path": [
+                "api",
+                "facturacion-soe",
+                "invoices",
+                "cancel",
+                "{{existing_invoice_id}}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "protocolProfileBehavior": {}
+    }
+  ],
+  "protocolProfileBehavior": {}
 }

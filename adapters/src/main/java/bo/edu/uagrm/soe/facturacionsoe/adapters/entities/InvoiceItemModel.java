@@ -60,24 +60,25 @@ public class InvoiceItemModel extends InvoiceItem<InvoiceModel, ProductModel> {
         return Objects.hash(getId(), getUnitPrice(), getQuantity(), getItemAmount());
     }
 
-/*
-    public void setInvoice(InvoiceModel invoice) {
-        this.invoice = invoice;
-    }*/
-
     @ManyToOne
     @JoinColumn(name = "invoice_id", referencedColumnName = "id", nullable = false)
     public InvoiceModel getInvoice() {
         return super.getInvoice();
     }
 
-    /*public void setProduct(ProductModel product) {
-        this.product = product;
-    }*/
+    @Override
+    public void setInvoice(InvoiceModel invoice) {
+        super.setInvoice(invoice);
+    }
 
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
     public ProductModel getProduct() {
         return super.getProduct();
+    }
+
+    @Override
+    public void setProduct(ProductModel product) {
+        super.setProduct(product);
     }
 }

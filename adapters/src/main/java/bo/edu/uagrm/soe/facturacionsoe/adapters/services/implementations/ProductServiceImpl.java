@@ -1,11 +1,14 @@
-package bo.edu.uagrm.soe.facturacionsoe.adapters.controllers.services.implementations;
+package bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations;
 
+import bo.edu.uagrm.soe.facturacionsoe.adapters.services.ProductService;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations.parsers.ProductParser;
+import bo.edu.uagrm.soe.facturacionsoe.entities.Product;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.ProductRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.ProductResponseDto;
-import bo.edu.uagrm.soe.facturacionsoe.adapters.controllers.services.ProductService;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.products.ProductMediator;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.products.create.CreateProductCommand;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.products.getall.GetAllProductsQuery;
-import org.springframework.beans.factory.annotation.Autowired;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.products.getbyid.GetProductByIdQuery;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -14,20 +17,23 @@ import java.util.List;
 @Service("ProductService")
 public class ProductServiceImpl implements ProductService {
     private ProductMediator mediator;
+    private ProductParser parser;
 
-    public ProductServiceImpl(@Qualifier("ProductMediator") ProductMediator mediator) {
+    public ProductServiceImpl(@Qualifier("ProductMediator") ProductMediator mediator, ProductParser parser) {
         this.mediator = mediator;
+        this.parser = parser;
     }
 
     @Override
     public List<ProductResponseDto> findAll() {
-        System.out.println(mediator.send(new GetAllProductsQuery()));
-        return null;
+        List<Product> result = mediator.send(new GetAllProductsQuery());
+        return parser.parseEntitiesToResponseDtos(result);
     }
 
     @Override
     public ProductResponseDto findById(Long id) throws Exception {
-        return null;
+        Product result = mediator.send(new GetProductByIdQuery(id));
+        return parser.parseEntityToResponseDto(result);
     }
 
     @Override
@@ -37,7 +43,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponseDto store(ProductRequestDto productRequestDto) throws Exception {
-        return null;
+        Product result = mediator.send(new CreateProductCommand(
+                productRequestDto.getCode(), productRequestDto.getName(), productRequestDto.getDescription()
+        ));
+        return parser.parseEntityToResponseDto(result);
     }
 
     @Override
@@ -93,4 +102,5 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new Exception("It does not exist a product with the specified id"));
     }
 
-*/}
+*/
+}

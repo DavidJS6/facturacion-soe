@@ -1,8 +1,9 @@
 package bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects;
 
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.ProductRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.products.create.CreateProductCommand;
 
-public class ProductValueObject extends AbstractValueObject<ProductRequestDto> {
+public class ProductValueObject extends AbstractValueObject<CreateProductCommand> {
     /*
     private String50 codeObject;
     private String50 nameObject;
@@ -39,12 +40,12 @@ public class ProductValueObject extends AbstractValueObject<ProductRequestDto> {
     }
     */
 
-    public ProductValueObject(ProductRequestDto value) {
+    public ProductValueObject(CreateProductCommand value) {
         super(value);
     }
 
     @Override
-    protected void validateValue(ProductRequestDto value) throws RuntimeException {
+    protected void validateValue(CreateProductCommand value) throws RuntimeException {
         new String50(value.getCode());
         new String50(value.getName());
         new String50(value.getDescription());

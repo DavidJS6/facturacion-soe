@@ -1,8 +1,6 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.entities;
 
 import bo.edu.uagrm.soe.facturacionsoe.entities.Invoice;
-import bo.edu.uagrm.soe.facturacionsoe.entities.InvoiceItem;
-import bo.edu.uagrm.soe.facturacionsoe.entities.Payment;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -94,8 +92,18 @@ public class InvoiceModel extends Invoice<PaymentModel, InvoiceItemModel> {
     }
 
     @Override
+    public void setInvoiceItems(Collection<InvoiceItemModel> invoiceItemModels) {
+        super.setInvoiceItems(invoiceItemModels);
+    }
+
+    @Override
     @OneToOne(mappedBy = "invoice", cascade = CascadeType.PERSIST)
     public PaymentModel getPayment() {
         return super.getPayment();
+    }
+
+    @Override
+    public void setPayment(PaymentModel payment) {
+        super.setPayment(payment);
     }
 }

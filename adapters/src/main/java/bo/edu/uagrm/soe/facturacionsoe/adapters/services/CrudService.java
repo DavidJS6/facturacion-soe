@@ -1,4 +1,4 @@
-package bo.edu.uagrm.soe.facturacionsoe.adapters.controllers.services;
+package bo.edu.uagrm.soe.facturacionsoe.adapters.services;
 
 import java.util.List;
 
