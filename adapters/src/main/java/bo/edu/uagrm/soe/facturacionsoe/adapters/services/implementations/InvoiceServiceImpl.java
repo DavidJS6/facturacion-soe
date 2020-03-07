@@ -1,14 +1,31 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations;
 
 import bo.edu.uagrm.soe.facturacionsoe.adapters.services.InvoiceService;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations.parsers.InvoiceParser;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations.parsers.ProductParser;
+import bo.edu.uagrm.soe.facturacionsoe.entities.Invoice;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.InvoiceResponseDto;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.InvoiceMediator;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.getall.GetAllInvoicesHandler;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.getall.GetAllInvoicesQuery;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.products.ProductMediator;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
+
+    private InvoiceMediator mediator;
+    private InvoiceParser parser;
+
+    public InvoiceServiceImpl(@Qualifier("InvoiceMediator") InvoiceMediator mediator, InvoiceParser parser) {
+        this.mediator = mediator;
+        this.parser = parser;
+    }
+
     @Override
     public InvoiceResponseDto cancel(Long id) throws Exception {
         return null;
@@ -16,7 +33,8 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public List<InvoiceResponseDto> findAll() {
-        return null;
+        List<Invoice> invoices = mediator.send(new GetAllInvoicesQuery());
+        return parser.parseEntitiesToResponseDtos(invoices);
     }
 
     @Override
@@ -38,6 +56,7 @@ public class InvoiceServiceImpl implements InvoiceService {
     public void delete(Long id) throws Exception {
 
     }
+
     /*private static final String CANCELLED_STATUS = "CANCELLED";
     private InvoiceRepository repository;
     private InvoiceParser parser;

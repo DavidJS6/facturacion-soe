@@ -2,13 +2,14 @@ package bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.usecase;
 
 import bo.edu.uagrm.soe.facturacionsoe.adapters.entities.PaymentModel;
 import bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.spring.PaymentSpringRepository;
+import bo.edu.uagrm.soe.facturacionsoe.entities.Payment;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.ports.repositories.PaymentRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class PaymentRepositoryImpl implements PaymentRepository<PaymentModel> {
+public class PaymentRepositoryImpl implements PaymentRepository<Payment> {
 
     private final PaymentSpringRepository repository;
 
@@ -17,17 +18,17 @@ public class PaymentRepositoryImpl implements PaymentRepository<PaymentModel> {
     }
 
     @Override
-    public List<PaymentModel> findAll() {
+    public List<Payment> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public PaymentModel findById(Long id) {
+    public Payment findById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public PaymentModel save(PaymentModel payment) {
+    public Payment save(Payment payment) {
         return repository.save(payment);
     }
 

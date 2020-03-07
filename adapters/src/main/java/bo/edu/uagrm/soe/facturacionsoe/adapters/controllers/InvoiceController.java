@@ -1,12 +1,21 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.services.InvoiceService;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.InvoiceResponseDto;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/facturacion-soe/invoices")
 public class InvoiceController {
-    /*private InvoiceService invoiceService;
+
+    private InvoiceService invoiceService;
 
     public InvoiceController(InvoiceService invoiceService) {
         this.invoiceService = invoiceService;
@@ -39,5 +48,5 @@ public class InvoiceController {
     public ResponseEntity<InvoiceResponseDto> cancelInvoice(@PathVariable Long id) throws Exception {
         return new ResponseEntity<>(invoiceService.cancel(id), HttpStatus.OK);
     }
-*/
+
 }

@@ -7,8 +7,10 @@ import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.ProductRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.ProductResponseDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.products.ProductMediator;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.products.create.CreateProductCommand;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.products.delete.DeleteProductByIdCommand;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.products.getall.GetAllProductsQuery;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.products.getbyid.GetProductByIdQuery;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.products.update.UpdateProductCommand;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +40,10 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponseDto update(Long id, ProductRequestDto productRequestDto) throws Exception {
-        return null;
+        Product result = mediator.send(new UpdateProductCommand(
+                id, productRequestDto.getCode(), productRequestDto.getName(), productRequestDto.getDescription()
+        ));
+        return parser.parseEntityToResponseDto(result);
     }
 
     @Override
@@ -51,7 +56,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void delete(Long id) throws Exception {
-
+        mediator.send(new DeleteProductByIdCommand(id));
     }
 
     /*private ProductRepository productRepository;

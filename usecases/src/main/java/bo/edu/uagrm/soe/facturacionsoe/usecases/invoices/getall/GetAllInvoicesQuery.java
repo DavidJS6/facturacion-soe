@@ -4,5 +4,5 @@ import bo.edu.uagrm.soe.facturacionsoe.usecases.cqrs.Request;
 
 import java.util.List;
 
-public class GetInvoicesQuery implements Request<List<Request>> {
+public class GetAllInvoicesQuery implements Request<List<Request>> {
 }

@@ -2,13 +2,14 @@ package bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.usecase;
 
 import bo.edu.uagrm.soe.facturacionsoe.adapters.entities.ProductPriceModel;
 import bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.spring.ProductPriceSpringRepository;
+import bo.edu.uagrm.soe.facturacionsoe.entities.ProductPrice;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.ports.repositories.ProductPriceRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class ProductPriceRepositoryImpl implements ProductPriceRepository<ProductPriceModel> {
+public class ProductPriceRepositoryImpl implements ProductPriceRepository<ProductPrice> {
 
     private final ProductPriceSpringRepository repository;
 
@@ -17,17 +18,17 @@ public class ProductPriceRepositoryImpl implements ProductPriceRepository<Produc
     }
 
     @Override
-    public List<ProductPriceModel> findAll() {
+    public List<ProductPrice> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public ProductPriceModel findById(Long id) {
+    public ProductPrice findById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public ProductPriceModel save(ProductPriceModel productPrice) {
+    public ProductPrice save(ProductPrice productPrice) {
         return repository.save(productPrice);
     }
 
@@ -37,12 +38,12 @@ public class ProductPriceRepositoryImpl implements ProductPriceRepository<Produc
     }
 
     @Override
-    public List<ProductPriceModel> getAllActivePrices() {
+    public List<ProductPrice> getAllActivePrices() {
         return repository.getAllActivePrices();
     }
 
     @Override
-    public List<ProductPriceModel> getAllActivePricesByProductId(Long productId) {
+    public List<ProductPrice> getAllActivePricesByProductId(Long productId) {
         return repository.getAllActivePricesByProductId(productId);
     }
 }

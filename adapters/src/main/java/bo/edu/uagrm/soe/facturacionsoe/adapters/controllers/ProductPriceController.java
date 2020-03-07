@@ -1,12 +1,16 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.services.ProductPriceService;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.ProductPriceRequestDto;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/facturacion-soe/product-prices")
 public class ProductPriceController {
-    /*private ProductPriceService productPriceService;
+
+    private ProductPriceService productPriceService;
 
     public ProductPriceController(ProductPriceService productPriceService) {
         this.productPriceService = productPriceService;
@@ -37,5 +41,5 @@ public class ProductPriceController {
     public ResponseEntity<Object> getAllProductPrices() {
         return new ResponseEntity<>(productPriceService.findAll(), HttpStatus.OK);
     }
-*/
+
 }

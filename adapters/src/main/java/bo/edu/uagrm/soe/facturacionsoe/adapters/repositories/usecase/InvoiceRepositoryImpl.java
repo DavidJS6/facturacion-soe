@@ -2,13 +2,14 @@ package bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.usecase;
 
 import bo.edu.uagrm.soe.facturacionsoe.adapters.entities.InvoiceModel;
 import bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.spring.InvoiceSpringRepository;
+import bo.edu.uagrm.soe.facturacionsoe.entities.Invoice;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.ports.repositories.InvoiceRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
-public class InvoiceRepositoryImpl implements InvoiceRepository<InvoiceModel> {
+public class InvoiceRepositoryImpl implements InvoiceRepository<Invoice> {
 
     private final InvoiceSpringRepository repository;
 
@@ -17,17 +18,17 @@ public class InvoiceRepositoryImpl implements InvoiceRepository<InvoiceModel> {
     }
 
     @Override
-    public List<InvoiceModel> findAll() {
+    public List<Invoice> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public InvoiceModel findById(Long id) {
+    public Invoice findById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public InvoiceModel save(InvoiceModel invoice) {
+    public Invoice save(Invoice invoice) {
         return repository.save(invoice);
     }
 

@@ -1,11 +1,12 @@
 package bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects;
 
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.ProductPriceRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.productprices.create.CreateProductPriceCommand;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects.types.BooleanNotNull;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects.types.LongNotNull;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects.types.TimestampValueObject;
 
-public class ProductPriceValueObject extends AbstractValueObject<ProductPriceRequestDto> {
+public class ProductPriceValueObject extends AbstractValueObject<CreateProductPriceCommand> {
     /*
     private PositiveDouble amountObject;
     private TimestampValueObject startTimestampObject;
@@ -62,12 +63,12 @@ public class ProductPriceValueObject extends AbstractValueObject<ProductPriceReq
     }
     */
 
-    public ProductPriceValueObject(ProductPriceRequestDto value) {
+    public ProductPriceValueObject(CreateProductPriceCommand value) {
         super(value);
     }
 
     @Override
-    protected void validateValue(ProductPriceRequestDto value) throws RuntimeException {
+    protected void validateValue(CreateProductPriceCommand value) throws RuntimeException {
         new PositiveDouble(value.getAmount());
         new TimestampValueObject(value.getStartTimestamp());
         new TimestampValueObject(value.getEndTimestamp());

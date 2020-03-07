@@ -7,9 +7,7 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
-@Entity
-@Table(name = "products", schema = "public", catalog = "facturacion-soe")
-public class ProductModel extends Product<InvoiceItemModel, ProductPriceModel> {
+public class ProductModel extends Product {
     /*private Collection<InvoiceItemModel> invoiceItemList;
     private Collection<ProductPriceModel> productPriceList;*/
 
@@ -18,30 +16,21 @@ public class ProductModel extends Product<InvoiceItemModel, ProductPriceModel> {
     }
 
     @Override
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return super.getId();
     }
 
     @Override
-    @Basic
-    @Column(name = "code")
     public String getCode() {
         return super.getCode();
     }
 
     @Override
-    @Basic
-    @Column(name = "name")
     public String getName() {
         return super.getName();
     }
 
     @Override
-    @Basic
-    @Column(name = "description")
     public String getDescription() {
         return super.getDescription();
     }
@@ -66,9 +55,9 @@ public class ProductModel extends Product<InvoiceItemModel, ProductPriceModel> {
         this.invoiceItemList = invoiceItemList;
     }*/
 
+    /*
+
     @Override
-    @OneToMany(mappedBy = "product")
-    @JsonIgnore
     public Collection<InvoiceItemModel> getInvoiceItemList() {
         return super.getInvoiceItemList();
     }
@@ -79,8 +68,6 @@ public class ProductModel extends Product<InvoiceItemModel, ProductPriceModel> {
     }
 
     @Override
-    @OneToMany(mappedBy = "product")
-    @JsonIgnore
     public Collection<ProductPriceModel> getProductPriceList() {
         return super.getProductPriceList();
     }
@@ -89,4 +76,6 @@ public class ProductModel extends Product<InvoiceItemModel, ProductPriceModel> {
     public void setProductPriceList(Collection<ProductPriceModel> productPriceList) {
         super.setProductPriceList(productPriceList);
     }
+    */
+
 }
