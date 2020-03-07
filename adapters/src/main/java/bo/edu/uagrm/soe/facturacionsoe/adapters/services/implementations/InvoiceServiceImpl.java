@@ -6,7 +6,10 @@ import bo.edu.uagrm.soe.facturacionsoe.entities.Invoice;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.InvoiceResponseDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.InvoiceMediator;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.cancel.CancelInvoiceByIdCommand;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.delete.DeleteInvoiceByIdCommand;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.getall.GetAllInvoicesQuery;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.getbyid.GetInvoiceByIdQuery;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +28,8 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public InvoiceResponseDto cancel(Long id) throws Exception {
-        return null;
+        Invoice invoice = mediator.send(new CancelInvoiceByIdCommand(id));
+        return parser.parseEntityToResponseDto(invoice);
     }
 
     @Override
@@ -36,7 +40,8 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public InvoiceResponseDto findById(Long id) throws Exception {
-        return null;
+        Invoice invoice = mediator.send(new GetInvoiceByIdQuery(id));
+        return parser.parseEntityToResponseDto(invoice);
     }
 
     @Override
@@ -51,7 +56,7 @@ public class InvoiceServiceImpl implements InvoiceService {
 
     @Override
     public void delete(Long id) throws Exception {
-
+        mediator.send(new DeleteInvoiceByIdCommand(id));
     }
 
     /*private static final String CANCELLED_STATUS = "CANCELLED";

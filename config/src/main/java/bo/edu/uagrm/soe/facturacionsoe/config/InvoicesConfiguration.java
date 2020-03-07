@@ -1,6 +1,8 @@
 package bo.edu.uagrm.soe.facturacionsoe.config;
 
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.InvoiceMediator;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.cancel.CancelInvoiceByIdCommandHandler;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.delete.DeleteInvoiceByIdCommandHandler;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.getall.GetAllInvoicesHandler;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.getbyid.GetInvoiceByIdHandler;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.save.InvoiceMediatorImpl;
@@ -15,7 +17,9 @@ public class InvoicesConfiguration {
     public InvoiceMediator getGetAllInvoicesHandler(InvoiceRepository invoiceRepository) {
         return new InvoiceMediatorImpl(
                 new GetAllInvoicesHandler(invoiceRepository),
-                new GetInvoiceByIdHandler(invoiceRepository)
+                new GetInvoiceByIdHandler(invoiceRepository),
+                new DeleteInvoiceByIdCommandHandler(invoiceRepository),
+                new CancelInvoiceByIdCommandHandler(invoiceRepository)
         );
     }
 
