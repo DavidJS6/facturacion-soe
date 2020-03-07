@@ -14,7 +14,4 @@ public class DeleteProductByIdCommand implements Request {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 }
