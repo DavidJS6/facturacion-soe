@@ -4,13 +4,9 @@ import bo.edu.uagrm.soe.facturacionsoe.entities.Product;
 import bo.edu.uagrm.soe.facturacionsoe.entities.ProductPrice;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.cqrs.Handler;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.ports.repositories.ProductPriceRepository;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.ports.repositories.ProductRepository;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.productprices.ProductPriceParser;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.productprices.create.CreateProductPriceCommand;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.products.ProductParser;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.products.create.CreateProductCommand;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects.ProductPriceValueObject;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects.ProductValueObject;
 
 public class UpdateProductPriceCommandHandler implements Handler<UpdateProductPriceCommand, ProductPrice> {
 

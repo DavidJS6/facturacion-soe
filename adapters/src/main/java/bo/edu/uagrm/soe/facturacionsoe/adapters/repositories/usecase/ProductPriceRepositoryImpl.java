@@ -1,6 +1,5 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.usecase;
 
-import bo.edu.uagrm.soe.facturacionsoe.adapters.entities.ProductPriceModel;
 import bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.spring.ProductPriceSpringRepository;
 import bo.edu.uagrm.soe.facturacionsoe.entities.ProductPrice;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.ports.repositories.ProductPriceRepository;

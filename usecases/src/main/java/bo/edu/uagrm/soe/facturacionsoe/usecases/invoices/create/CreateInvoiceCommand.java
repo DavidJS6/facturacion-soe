@@ -2,10 +2,6 @@ package bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.create;
 
 import bo.edu.uagrm.soe.facturacionsoe.entities.Invoice;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.cqrs.Request;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceItemRequestDto;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.PaymentRequestDto;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.products.create.CreateInvoiceItemCommand;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.products.create.CreatePaymentCommand;
 
 import java.sql.Timestamp;
 import java.util.List;

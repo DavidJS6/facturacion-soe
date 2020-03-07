@@ -1,7 +1,6 @@
 package bo.edu.uagrm.soe.facturacionsoe.config;
 
 import bo.edu.uagrm.soe.facturacionsoe.adapters.controllers.ProductController;
-import bo.edu.uagrm.soe.facturacionsoe.adapters.entities.ProductModel;
 import bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.spring.ProductSpringRepository;
 import bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.usecase.ProductRepositoryImpl;
 import bo.edu.uagrm.soe.facturacionsoe.entities.Product;
@@ -17,7 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
         ApplicationConfiguration.class
 })
 @EntityScan(basePackageClasses = {
-        ProductModel.class,
+        //ProductModel.class,
         Product.class
 })
 @EnableJpaRepositories(basePackageClasses = {ProductSpringRepository.class})

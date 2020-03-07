@@ -1,6 +1,5 @@
 package bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects;
 
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.ProductRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.products.create.CreateProductCommand;
 
 public class ProductValueObject extends AbstractValueObject<CreateProductCommand> {

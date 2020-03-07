@@ -2,14 +2,11 @@ package bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations;
 
 import bo.edu.uagrm.soe.facturacionsoe.adapters.services.InvoiceService;
 import bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations.parsers.InvoiceParser;
-import bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations.parsers.ProductParser;
 import bo.edu.uagrm.soe.facturacionsoe.entities.Invoice;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.InvoiceResponseDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.InvoiceMediator;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.getall.GetAllInvoicesHandler;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.getall.GetAllInvoicesQuery;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.products.ProductMediator;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 

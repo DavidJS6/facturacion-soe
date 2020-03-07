@@ -12,7 +12,6 @@ import bo.edu.uagrm.soe.facturacionsoe.usecases.products.getbyid.GetProductByIdQ
 import bo.edu.uagrm.soe.facturacionsoe.usecases.products.update.UpdateProductCommand;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.products.update.UpdateProductCommandHandler;
 
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.List;
 
 public class ProductMediatorImpl implements ProductMediator {

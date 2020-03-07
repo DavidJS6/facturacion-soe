@@ -1,9 +1,7 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations;
 
 import bo.edu.uagrm.soe.facturacionsoe.adapters.services.ProductPriceService;
-import bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations.parsers.ProductParser;
 import bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations.parsers.ProductPriceParser;
-import bo.edu.uagrm.soe.facturacionsoe.entities.Product;
 import bo.edu.uagrm.soe.facturacionsoe.entities.ProductPrice;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.ProductPriceRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.ProductPriceResponseDto;
@@ -13,8 +11,6 @@ import bo.edu.uagrm.soe.facturacionsoe.usecases.productprices.delete.DeleteProdu
 import bo.edu.uagrm.soe.facturacionsoe.usecases.productprices.getall.GetAllProductPricesQuery;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.productprices.getbyid.GetProductPriceByIdQuery;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.productprices.update.UpdateProductPriceCommand;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.products.ProductMediator;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.products.getall.GetAllProductsQuery;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 

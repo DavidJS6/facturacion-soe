@@ -1,4 +1,4 @@
-package bo.edu.uagrm.soe.facturacionsoe.usecases.products.create;
+package bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.create;
 
 import bo.edu.uagrm.soe.facturacionsoe.entities.Payment;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.cqrs.Request;

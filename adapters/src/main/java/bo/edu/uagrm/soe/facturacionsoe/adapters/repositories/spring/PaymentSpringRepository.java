@@ -1,6 +1,5 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.spring;
 
-import bo.edu.uagrm.soe.facturacionsoe.adapters.entities.PaymentModel;
 import bo.edu.uagrm.soe.facturacionsoe.entities.Payment;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

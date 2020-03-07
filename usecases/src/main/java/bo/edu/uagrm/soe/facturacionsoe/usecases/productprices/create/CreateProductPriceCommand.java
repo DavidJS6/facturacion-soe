@@ -1,6 +1,5 @@
 package bo.edu.uagrm.soe.facturacionsoe.usecases.productprices.create;
 
-import bo.edu.uagrm.soe.facturacionsoe.entities.Product;
 import bo.edu.uagrm.soe.facturacionsoe.entities.ProductPrice;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.cqrs.Request;
 

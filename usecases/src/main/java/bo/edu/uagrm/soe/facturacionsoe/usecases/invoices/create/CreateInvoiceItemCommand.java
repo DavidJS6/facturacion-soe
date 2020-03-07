@@ -1,4 +1,4 @@
-package bo.edu.uagrm.soe.facturacionsoe.usecases.products.create;
+package bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.create;
 
 public class CreateInvoiceItemCommand {
 

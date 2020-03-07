@@ -1,6 +1,5 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.usecase;
 
-import bo.edu.uagrm.soe.facturacionsoe.adapters.entities.InvoiceModel;
 import bo.edu.uagrm.soe.facturacionsoe.adapters.repositories.spring.InvoiceSpringRepository;
 import bo.edu.uagrm.soe.facturacionsoe.entities.Invoice;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.ports.repositories.InvoiceRepository;
