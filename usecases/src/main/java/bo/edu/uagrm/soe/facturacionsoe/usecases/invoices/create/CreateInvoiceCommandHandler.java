@@ -11,16 +11,17 @@ public class CreateInvoiceCommandHandler implements Handler<CreateInvoiceCommand
     private InvoiceRepository<Invoice> repository;
     private InvoiceParser parser;
 
-    public CreateInvoiceCommandHandler(InvoiceRepository<Invoice> repository, InvoiceParser parser) {
+    public CreateInvoiceCommandHandler(InvoiceRepository<Invoice> repository) {
         this.repository = repository;
-        this.parser = parser;
+        this.parser = new InvoiceParser();
     }
 
     @Override
     public Invoice handleRequest(CreateInvoiceCommand createInvoiceCommand) {
         InvoiceValueObject validatedInvoice = new InvoiceValueObject(createInvoiceCommand);
-
-        return null;
+        CreateInvoiceCommand commandValue = validatedInvoice.getValue();
+        Invoice invoiceToSave = parser.parseCommandToEntity(commandValue);
+        return repository.save(invoiceToSave);
     }
 
 }

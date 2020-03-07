@@ -1,7 +1,7 @@
 package bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects;
 
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceItemRequestDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.create.CreateInvoiceCommand;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.create.CreateInvoiceItemCommand;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects.types.LongNotNull;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects.types.StringNotNull;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.valueobjects.types.TimestampValueObject;
@@ -49,13 +49,13 @@ public class InvoiceValueObject extends AbstractValueObject<CreateInvoiceCommand
         new PositiveDouble(invoice.getTotalAmount());
         new TimestampValueObject(invoice.getTimestamp());
         new StringNotNull(invoice.getStatus());
-        //new PaymentValueObject(invoice.getPayment());
-        //validateInvoiceItems(invoice.getInvoiceItems());
+        new PaymentValueObject(invoice.getPayment());
+        validateInvoiceItems(invoice.getInvoiceItems());
     }
 
-    private List<InvoiceItemValueObject> validateInvoiceItems(List<InvoiceItemRequestDto> invoiceItems) {
+    private List<InvoiceItemValueObject> validateInvoiceItems(List<CreateInvoiceItemCommand> invoiceItems) {
         List<InvoiceItemValueObject> result = new ArrayList<>();
-        for (InvoiceItemRequestDto invoiceItemDto : invoiceItems) {
+        for (CreateInvoiceItemCommand invoiceItemDto : invoiceItems) {
             result.add(new InvoiceItemValueObject(invoiceItemDto));
         }
         return result;

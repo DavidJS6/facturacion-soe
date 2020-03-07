@@ -1,7 +1,7 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.services;
 
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceRequestDto;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.InvoiceResponseDto;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.request.InvoiceRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.response.InvoiceResponseDto;
 
 public interface InvoiceService extends CrudService<InvoiceRequestDto, InvoiceResponseDto, Exception> {
 

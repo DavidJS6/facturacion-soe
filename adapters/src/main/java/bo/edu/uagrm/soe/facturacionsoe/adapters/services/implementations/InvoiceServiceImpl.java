@@ -1,57 +1,69 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations;
 
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.parsing.EntityToResponseDtoParser;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.parsing.RequestDtoToEntityParser;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.request.InvoiceRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.response.InvoiceResponseDto;
 import bo.edu.uagrm.soe.facturacionsoe.adapters.services.InvoiceService;
-import bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations.parsers.InvoiceParser;
 import bo.edu.uagrm.soe.facturacionsoe.entities.Invoice;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceRequestDto;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.InvoiceResponseDto;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.InvoiceMediator;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.cancel.CancelInvoiceByIdCommand;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.create.CreateInvoiceCommand;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.delete.DeleteInvoiceByIdCommand;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.getall.GetAllInvoicesQuery;
 import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.getbyid.GetInvoiceByIdQuery;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.NotSupportedException;
 import java.util.List;
 
 @Service
 public class InvoiceServiceImpl implements InvoiceService {
 
     private InvoiceMediator mediator;
-    private InvoiceParser parser;
+    private RequestDtoToEntityParser<InvoiceRequestDto, CreateInvoiceCommand> requestsParser;
+    private EntityToResponseDtoParser<Invoice, InvoiceResponseDto> responseParser;
 
-    public InvoiceServiceImpl(@Qualifier("InvoiceMediator") InvoiceMediator mediator, InvoiceParser parser) {
+    @Autowired
+    public InvoiceServiceImpl(@Qualifier("InvoiceMediator") InvoiceMediator mediator,
+                              RequestDtoToEntityParser<InvoiceRequestDto, CreateInvoiceCommand> requestsParser,
+                              EntityToResponseDtoParser<Invoice, InvoiceResponseDto> responseParser
+    ) {
         this.mediator = mediator;
-        this.parser = parser;
+        this.requestsParser = requestsParser;
+        this.responseParser = responseParser;
     }
 
     @Override
     public InvoiceResponseDto cancel(Long id) throws Exception {
         Invoice invoice = mediator.send(new CancelInvoiceByIdCommand(id));
-        return parser.parseEntityToResponseDto(invoice);
+        return responseParser.parseEntityToResponseDto(invoice);
     }
 
     @Override
     public List<InvoiceResponseDto> findAll() {
         List<Invoice> invoices = mediator.send(new GetAllInvoicesQuery());
-        return parser.parseEntitiesToResponseDtos(invoices);
+        return responseParser.parseEntitiesToResponseDtos(invoices);
     }
 
     @Override
     public InvoiceResponseDto findById(Long id) throws Exception {
         Invoice invoice = mediator.send(new GetInvoiceByIdQuery(id));
-        return parser.parseEntityToResponseDto(invoice);
+        return responseParser.parseEntityToResponseDto(invoice);
     }
 
     @Override
     public InvoiceResponseDto update(Long id, InvoiceRequestDto invoiceRequestDto) throws Exception {
-        return null;
+        throw new NotSupportedException();
     }
 
     @Override
     public InvoiceResponseDto store(InvoiceRequestDto invoiceRequestDto) throws Exception {
-        return null;
+        CreateInvoiceCommand createInvoiceCommand = requestsParser.parseRequestDtoToCommand(invoiceRequestDto);
+        Invoice createdInvoice = mediator.send(createInvoiceCommand);
+        return responseParser.parseEntityToResponseDto(createdInvoice);
     }
 
     @Override

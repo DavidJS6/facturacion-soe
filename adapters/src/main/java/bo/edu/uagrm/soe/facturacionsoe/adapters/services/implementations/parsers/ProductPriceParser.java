@@ -1,9 +1,9 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations.parsers;
 
 import bo.edu.uagrm.soe.facturacionsoe.entities.ProductPrice;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.parsing.DtoEntityParserAbstractImpl;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.ProductPriceRequestDto;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.ProductPriceResponseDto;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.parsing.DtoEntityParserAbstractImpl;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.request.ProductPriceRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.response.ProductPriceResponseDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
@@ -17,7 +17,7 @@ public class ProductPriceParser extends DtoEntityParserAbstractImpl<ProductPrice
     }
 
     @Override
-    public ProductPrice parseRequestDtoToEntity(ProductPriceRequestDto productPriceRequestDto) {
+    public ProductPrice parseRequestDtoToCommand(ProductPriceRequestDto productPriceRequestDto) {
         ModelMapper mapper = new ModelMapper();
         mapper.addMappings(new ProductPricePropertyMap());
         return mapper.map(productPriceRequestDto, ProductPrice.class);

@@ -17,6 +17,9 @@ public class CreateInvoiceCommand implements Request<Invoice> {
     private CreatePaymentCommand payment;
     private List<CreateInvoiceItemCommand> invoiceItems;
 
+    public CreateInvoiceCommand() {
+    }
+
     public CreateInvoiceCommand(Long invoiceNumber, String clientName, Long nit, Double totalAmount,
                                 Timestamp timestamp, String status, CreatePaymentCommand payment,
                                 List<CreateInvoiceItemCommand> invoiceItems) {
@@ -60,5 +63,37 @@ public class CreateInvoiceCommand implements Request<Invoice> {
 
     public List<CreateInvoiceItemCommand> getInvoiceItems() {
         return invoiceItems;
+    }
+
+    public void setInvoiceNumber(Long invoiceNumber) {
+        this.invoiceNumber = invoiceNumber;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public void setNit(Long nit) {
+        this.nit = nit;
+    }
+
+    public void setTotalAmount(Double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setPayment(CreatePaymentCommand payment) {
+        this.payment = payment;
+    }
+
+    public void setInvoiceItems(List<CreateInvoiceItemCommand> invoiceItems) {
+        this.invoiceItems = invoiceItems;
     }
 }

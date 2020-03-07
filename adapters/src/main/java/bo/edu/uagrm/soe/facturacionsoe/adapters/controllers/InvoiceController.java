@@ -1,8 +1,8 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.controllers;
 
 import bo.edu.uagrm.soe.facturacionsoe.adapters.services.InvoiceService;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceRequestDto;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.InvoiceResponseDto;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.request.InvoiceRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.response.InvoiceResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

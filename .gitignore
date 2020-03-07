@@ -30,3 +30,6 @@ build/
 ### VS Code ###
 .vscode/
 *.ldb
+
+### Maven plugin ###
+*dependency-reduced-pom.xml

@@ -1,15 +1,17 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.services.implementations.parsers;
 
 import bo.edu.uagrm.soe.facturacionsoe.entities.Invoice;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.parsing.DtoEntityParserAbstractImpl;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.InvoiceRequestDto;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.InvoiceResponseDto;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.parsing.DtoEntityParserAbstractImpl;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.request.InvoiceRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.response.InvoiceResponseDto;
+//import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.create.CreateInvoiceCommand;
+import bo.edu.uagrm.soe.facturacionsoe.usecases.invoices.create.CreateInvoiceCommand;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class InvoiceParser extends DtoEntityParserAbstractImpl<InvoiceRequestDto, InvoiceResponseDto, Invoice> {
-    @Override
+public class InvoiceParser/* extends DtoEntityParserAbstractImpl<InvoiceRequestDto, InvoiceResponseDto, CreateInvoiceCommand> */{
+    /*@Override
     public InvoiceResponseDto parseEntityToResponseDto(Invoice invoice) {
         ModelMapper mapper = new ModelMapper();
         return mapper.map(invoice, InvoiceResponseDto.class);
@@ -25,9 +27,9 @@ public class InvoiceParser extends DtoEntityParserAbstractImpl<InvoiceRequestDto
         return resultInvoice;
     }
 
-    /*private void setInvoiceInInvoiceItems(Invoice resultInvoice) {
+    *//*private void setInvoiceInInvoiceItems(Invoice resultInvoice) {
         for (InvoiceItem invoiceItem : resultInvoice.getInvoiceItems()) {
             invoiceItem.setInvoice(resultInvoice);
         }
-    }*/
-}
+    }*//*
+*/}

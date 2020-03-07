@@ -45,6 +45,7 @@ el siguiente comando desde la raíz del proyecto
     debe compilarse el proyecto antes de ejecutarlo
     
         mvn package
+        java -jar app/target/app-1.0.0.jar
     
 7. Cargar los archivos [collection](src/main/resources/postman/collection.json) y
 [environment](src/main/resources/postman/environment.json) (Los cuales se encuentran en 

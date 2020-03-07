@@ -1,7 +1,7 @@
 package bo.edu.uagrm.soe.facturacionsoe.adapters.services;
 
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.request.ProductPriceRequestDto;
-import bo.edu.uagrm.soe.facturacionsoe.usecases.dto.response.ProductPriceResponseDto;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.request.ProductPriceRequestDto;
+import bo.edu.uagrm.soe.facturacionsoe.adapters.dto.response.ProductPriceResponseDto;
 
 import java.util.List;
 

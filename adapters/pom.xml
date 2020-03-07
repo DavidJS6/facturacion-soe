@@ -15,12 +15,6 @@
     <dependencies>
         <dependency>
             <groupId>bo.edu.uagrm.soe</groupId>
-            <artifactId>domain</artifactId>
-            <version>1.0.0</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>bo.edu.uagrm.soe</groupId>
             <artifactId>usecases</artifactId>
             <version>1.0.0</version>
             <scope>compile</scope>
